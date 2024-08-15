@@ -9,7 +9,7 @@ const Menu = () => {
     // const currentPath = location.pathname;
     // console.log(currentPath)
     return (
-        <sidebar className="sidebar-container center" >
+        <aside className="sidebar-container center">
             <nav className="navbar">
                 <ul>
                     <li className='menu-item'><IoPersonOutline/></li>
@@ -18,7 +18,7 @@ const Menu = () => {
                 </ul>
                 <button className=''><IoLogOutOutline/></button>    
             </nav>
-        </sidebar>
+        </aside>
     );
 };
 

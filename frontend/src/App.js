@@ -5,8 +5,8 @@ import Training from './pages/training';
 function App() {
   return (
     <div className='App'>
-      <Login/>
-      {/* <Training/> */}
+      {/* <Login/> */}
+      <Training/>
     </div>
   );
 }

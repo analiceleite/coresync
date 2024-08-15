@@ -1,25 +1,23 @@
 import React from 'react';
 import './styles.css';
-import Menu from '../../components/global/menu';
 import Title from '../../components/global/title';
+import Container from '../../containers/global/container';
+import TrainingList from '../../containers/trainings/trainingList';
 
 const Training = () => {
   return (
-    <div className='container' >
-        <Menu/>
-        <main className='center' >
-          <section className='training-container'>
-
-            <div>
-              
-                <Title text="Bem-vindo aos"/>
-                <Title text="Treinamentos!" color="dark-blue" />
-              
-            </div>
-            <div></div>
-          </section>
-        </main>
-    </div>
+    <Container>
+      <section className='training-container'>
+        <div>
+          <div>
+            <Title text="Bem-vindo aos"/>
+            <Title text="Treinamentos!" color="dark-blue"/>
+          </div>
+          <TrainingList/>
+        </div>
+        <div></div>
+      </section>
+    </Container>
   );
 };
 
