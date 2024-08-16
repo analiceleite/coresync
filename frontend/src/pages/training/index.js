@@ -1,8 +1,9 @@
 import React from 'react';
 import Title from '../../components/global/title';
 import BaseContainer from '../../containers/global/container';
-import TrainingList from '../../containers/trainings/trainingList';
-import { TitleContainer, Container } from './styles.js';
+import TrainingList from '../../containers/training/trainingList';
+import { TitleContainer, Container, TrainingListContainer } from './styles.js';
+import TrainingView from '../../containers/training/trainingView/index.js';
 
 const Training = () => {
   return (
@@ -13,9 +14,13 @@ const Training = () => {
             <Title text="Bem-vindo aos"/>
             <Title text="Treinamentos!" color="dark-blue"/>
           </TitleContainer>
-          <TrainingList/>
+          <TrainingListContainer>
+            <TrainingList/>
+          </TrainingListContainer>
         </div>
-        <div></div>
+        <div>
+          <TrainingView/>  
+        </div>
       </Container>
     </BaseContainer>
   );

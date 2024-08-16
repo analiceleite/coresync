@@ -6,6 +6,7 @@ export const Container = styled.div`
     height: 70px;
     min-height: 70px;
     display: flex;
+    cursor: pointer;
 `;
 export const ColorContainer = styled.div`
     background-color: ${props => props.color};
@@ -20,6 +21,10 @@ export const TrainingContent = styled.div`
     justify-content: center;
     padding-inline: 20px;
 
+    h3 {
+        color: #333333;
+        font-size: 18px;
+    }
     p {
         font-size: 12px;
         color: #89898F;
