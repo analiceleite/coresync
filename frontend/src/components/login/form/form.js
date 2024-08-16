@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavbarTraining, NavbarTrainingItem, Underline } from "../../../containers/trainings/trainingList/styles.js";
+import PolkaDots from '../../../components/global/dots/index.js'
 import * as S from './styles.js';
 
 const Form = () => {
@@ -7,21 +8,24 @@ const Form = () => {
 
     return (
         <S.FormContainer>
-            <NavbarTraining>
-                <ul>
-                    <NavbarTrainingItem
-                        onClick={() => { setItemActive(0) }}
-                    >
-                        Entrar
-                    </NavbarTrainingItem>
-                    <NavbarTrainingItem
-                        onClick={() => { setItemActive(1) }}
-                    >
-                        Cadastrar-se
-                    </NavbarTrainingItem>
-                    <Underline active={itemActive} scenario="login"></Underline>
-                </ul>
-            </NavbarTraining>
+            <S.PolkaDotsContainer>
+                <NavbarTraining>
+                    <ul>
+                        <NavbarTrainingItem
+                            onClick={() => { setItemActive(0) }}
+                        >
+                            Entrar
+                        </NavbarTrainingItem>
+                        <NavbarTrainingItem
+                            onClick={() => { setItemActive(1) }}
+                        >
+                            Cadastrar-se
+                        </NavbarTrainingItem>
+                        <Underline active={itemActive} scenario="login"></Underline>
+                    </ul>
+                </NavbarTraining>
+                {/* <PolkaDots/> */}
+            </S.PolkaDotsContainer>
             <S.Form>
                 <S.FormGroup>
                     <S.Label>Email:</S.Label>

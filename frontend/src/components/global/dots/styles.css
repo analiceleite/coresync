@@ -31,3 +31,35 @@
     background-color: #FFBA08;
     margin: 0px 15px 0px 15px;
 }
+
+/* .container-dots{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.blue-dots{
+    width: 15px;
+    height: 15px;
+    border-radius: 20px;
+    background-color: #32589B;
+    margin: 0px 0px 0px 15px;
+}
+
+.light-blue-dots{
+    width: 15px;
+    height: 15px;
+    border-radius: 20px;
+    background-color: #72C8F3;
+    margin: 0px 0px 0px 15px;
+}
+
+
+.yellow-dots{
+    width: 15px;
+    height: 15px;
+    border-radius: 20px;
+    background-color: #FFBA08;
+    margin: 0px 0px 0px 15px;
+} */
