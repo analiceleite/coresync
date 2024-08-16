@@ -1,0 +1,33 @@
+.container-dots{
+    width: 150px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.blue-dots{
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #32589B;
+    margin: 0px 15px 0px 15px;
+}
+
+.light-blue-dots{
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #72C8F3;
+    margin: 0px 15px 0px 15px;
+}
+
+
+.yellow-dots{
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #FFBA08;
+    margin: 0px 15px 0px 15px;
+}
