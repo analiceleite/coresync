@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Header, Content, Video, VideoContainer } from './styles';
-import Status from '../../../components/training/status';
+import Status from '../../../components/training/trainingStatus';
 
 const TrainingView = () => {
   return (

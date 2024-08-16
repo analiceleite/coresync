@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavbarTraining, NavbarTrainingItem, Underline } from "../../../containers/trainings/trainingList/styles.js";
+import { NavbarTraining, NavbarTrainingItem, Underline } from "../../../containers/training/trainingList/styles.js";
 import PolkaDots from '../../../components/global/dots/index.js'
 import * as S from './styles.js';
 

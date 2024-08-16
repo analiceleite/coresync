@@ -1,5 +1,4 @@
 import React from 'react';
-import './styles.css';
 // import { useLocation } from 'react-router-dom';
 import { Aside, Navbar, MenuItem } from './styles';
 
@@ -17,7 +16,7 @@ const Menu = () => {
                     <MenuItem><IoLibraryOutline/></MenuItem>
                     <MenuItem><IoVideocamOutline/></MenuItem>
                 </ul>
-                <button className=''><IoLogOutOutline/></button>    
+                <a><IoLogOutOutline/></a>    
             </Navbar>
         </Aside>
     );

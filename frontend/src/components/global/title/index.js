@@ -3,9 +3,9 @@ import './styles.css';
 
 const Title = ({text, color}) => {
     return <>
-        <h2 className={`title ${color}`} >
+        <h1 className={`title ${color}`} >
             {text}
-        </h2>
+        </h1>
     </>
 };
 

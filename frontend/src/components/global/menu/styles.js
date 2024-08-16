@@ -23,7 +23,7 @@ export const Navbar = styled.nav`
         cursor: pointer;
     }
 
-    button{
+    a{
         position: absolute;
         bottom: 0;
         width: 50px;
@@ -37,6 +37,8 @@ export const Navbar = styled.nav`
         align-items: start;
         justify-content: center;
         padding-top: 20px;
+        color: white;
+        cursor: pointer;
 
         &:hover{
             background-color: #2d4e87;
