@@ -1,12 +1,12 @@
 import React from 'react';
 import './styles.css';
 
-const PolkaDots = () => {
-    return(
-        <div className='container-dots'>
-            <div className = 'blue-dots'></div>
-            <div className = 'light-blue-dots'></div>
-            <div className = 'yellow-dots'></div>
+const PolkaDots = ({ isSmall }) => {
+    return (
+        <div className={`container-dots ${isSmall ? 'container-dots--small' : ''}`}>
+            <div className={`blue-dots ${isSmall ? 'dots--small' : ''}`}></div>
+            <div className={`light-blue-dots ${isSmall ? 'dots--small' : ''}`}></div>
+            <div className={`yellow-dots ${isSmall ? 'dots--small' : ''}`}></div>
         </div>
     );
 };

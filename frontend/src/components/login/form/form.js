@@ -24,7 +24,7 @@ const Form = () => {
                         <Underline active={itemActive} scenario="login"></Underline>
                     </ul>
                 </NavbarTraining>
-                {/* <PolkaDots/> */}
+                <PolkaDots isSmall={true}/>
             </S.PolkaDotsContainer>
             <S.Form>
                 <S.FormGroup>

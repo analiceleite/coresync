@@ -17,7 +17,6 @@ export const PolkaDotsContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
 `
-
 export const Form = styled.form`
     margin-bottom: 30px;
 `

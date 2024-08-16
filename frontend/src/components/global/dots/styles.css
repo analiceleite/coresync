@@ -1,4 +1,4 @@
-.container-dots{
+.container-dots {
     width: 150px;
     display: flex;
     flex-direction: row;
@@ -7,59 +7,32 @@
     margin: 10px;
 }
 
-.blue-dots{
+.blue-dots, .light-blue-dots, .yellow-dots {
     width: 20px;
     height: 20px;
-    border-radius: 20px;
+    border-radius: 50%; 
+    margin: 0 15px;
+}
+
+.blue-dots {
     background-color: #32589B;
-    margin: 0px 15px 0px 15px;
 }
 
-.light-blue-dots{
-    width: 20px;
-    height: 20px;
-    border-radius: 20px;
+.light-blue-dots {
     background-color: #72C8F3;
-    margin: 0px 15px 0px 15px;
 }
 
-
-.yellow-dots{
-    width: 20px;
-    height: 20px;
-    border-radius: 20px;
+.yellow-dots {
     background-color: #FFBA08;
-    margin: 0px 15px 0px 15px;
 }
 
-/* .container-dots{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+/* Estilos para a variação 'small' */
+.container-dots--small {
+    width: auto;
 }
 
-.blue-dots{
+.dots--small {
     width: 15px;
     height: 15px;
-    border-radius: 20px;
-    background-color: #32589B;
-    margin: 0px 0px 0px 15px;
+    margin: 0 0 0 15px;
 }
-
-.light-blue-dots{
-    width: 15px;
-    height: 15px;
-    border-radius: 20px;
-    background-color: #72C8F3;
-    margin: 0px 0px 0px 15px;
-}
-
-
-.yellow-dots{
-    width: 15px;
-    height: 15px;
-    border-radius: 20px;
-    background-color: #FFBA08;
-    margin: 0px 0px 0px 15px;
-} */
