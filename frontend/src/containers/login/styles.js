@@ -13,6 +13,7 @@ export const LeftContainer = styled.div`
   flex: 1;
   display: flex;
   justify-content: center;
+  z-index: 2;
 `;
 
 export const RightContainer = styled.div`

@@ -1,5 +1,6 @@
 import './App.css';
-import Login from './pages/login'
+import MouseFollower from './components/mouse';
+import Login from './pages/login';
 import Training from './pages/training';
 import Profile from './pages/profile';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -7,11 +8,12 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 function App() {
   return (
     <div className='App'>
+      <MouseFollower />
       <Router>
         <Routes>
-          <Route path="/" element={<Login/>}/>
-          <Route path="/training" element={<Training/>}/>
-          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/" element={<Login />} />
+          <Route path="/training" element={<Training />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </Router>
     </div>

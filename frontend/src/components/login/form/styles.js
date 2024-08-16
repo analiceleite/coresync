@@ -36,18 +36,20 @@ export const Input = styled.input`
   box-sizing: border-box;
   border-radius: 10px;
   border: 1px solid #ccc;
+  border-left: 3px solid #FFBA08;
   outline: none;
 `;
 
 export const Button = styled.button`
-  padding: 10px;
+  padding: 15px;
   width: 100%;
   background-color: #1a3a72;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 16px;
+  margin-top: 10px;
 
   &:hover {
     background-color: #01164d;

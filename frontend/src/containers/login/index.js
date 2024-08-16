@@ -1,6 +1,6 @@
 import React from 'react';
 import Form from '../../components/login/form/form';
-import Logo from '../../images/CoreSync-removebg.png'
+import Logo from '../../assets/CoreSync-removebg.png'
 import * as S from './styles.js';
 
 const Login = () => {
