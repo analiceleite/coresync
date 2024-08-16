@@ -1,5 +1,5 @@
 import React from 'react';
-import MouseFollower from '../../components/mouse';
+import MouseFollower from '../../components/login/mouse/index.js';
 import Footer from '../../components/global/footer';
 import Form from '../../components/login/form/form';
 import Logo from '../../assets/CoreSync-removebg.png'
