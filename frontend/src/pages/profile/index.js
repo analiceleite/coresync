@@ -1,6 +1,7 @@
 import React from 'react';
 import BaseContainer from '../../containers/global/container';
 import IconProfile from '../../containers/profile/iconProfile'
+import FormProfile from '../../containers/profile/formProfile';
 import { Container} from './styles.js';
 
 const Profile = () => {
@@ -9,6 +10,9 @@ const Profile = () => {
             <Container>
                 <div>
                     <IconProfile />
+                </div>
+                <div>
+                    <FormProfile/>
                 </div>
             </Container>
         </BaseContainer>

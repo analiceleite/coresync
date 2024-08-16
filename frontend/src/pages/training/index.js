@@ -11,8 +11,8 @@ const Training = () => {
       <Container>
         <div>
           <TitleContainer>
-            <Title text="Bem-vindo aos"/>
-            <Title text="Treinamentos!" color="dark-blue"/>
+            <Title text="Acompanhe aqui seus"/>
+            <Title text="treinamentos!" color="dark-blue"/>
           </TitleContainer>
           <TrainingListContainer>
             <TrainingList/>

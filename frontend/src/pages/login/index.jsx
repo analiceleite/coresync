@@ -1,4 +1,4 @@
-import ContainerLogin from '../../containers/login'
+import ContainerLogin from '../../containers/login/loginContainer'
 
 const Login = () => (
   <>
