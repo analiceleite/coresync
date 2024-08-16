@@ -7,6 +7,11 @@ export const Container = styled.div`
     min-height: 70px;
     display: flex;
     cursor: pointer;
+    position: relative;
+    &:hover{
+        border: 1px solid rgba(51,51,51,.5);
+        background-color: #F3F3F3;
+    }
 `;
 export const ColorContainer = styled.div`
     background-color: ${props => props.color};
@@ -29,4 +34,11 @@ export const TrainingContent = styled.div`
         font-size: 12px;
         color: #89898F;
     }
+`;
+export const Check = styled.div`
+    position: absolute;
+    font-size: 24px;
+    right: 3%;
+    top: 15%;
+    color: #62D0A8;
 `;

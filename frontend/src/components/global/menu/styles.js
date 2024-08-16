@@ -20,29 +20,6 @@ export const Navbar = styled.nav`
     ul {
         padding: 0;
         margin: 0;
-        cursor: pointer;
-    }
-
-    a{
-        position: absolute;
-        bottom: 0;
-        width: 50px;
-        height: 65px;
-        border-radius: 0px;
-        border-top-left-radius: 30px;
-        border-top-right-radius: 30px;
-        background-color: #32589B;
-        font-size: 25px;
-        display: flex;
-        align-items: start;
-        justify-content: center;
-        padding-top: 20px;
-        color: white;
-        cursor: pointer;
-
-        &:hover{
-            background-color: #2d4e87;
-        }
     }
 `;
 export const MenuItem = styled.li`
@@ -55,10 +32,34 @@ export const MenuItem = styled.li`
     align-items: center;
     font-size: 20px;
     margin-block: 10px;
-    background-color: rgba(217, 217, 217, .3);
-    color: rgba(53,53,72,.8);
+    background-color: ${ props => props.active  ? '#32589B' : 'rgba(217, 217, 217, .3)' };
+    a{
+        color: ${ props => props.active  ? 'white' : 'rgba(53,53,72,.8)' };
+    }
+    cursor: pointer;
 
     &:hover{
-        background-color: rgba(217, 217, 217, .5);
+        background-color: ${ props => props.active  ? '#2d4e87' : 'rgba(217, 217, 217, .5)' };
     }
 `;
+export const Logout = styled.a`
+    position: absolute;
+    bottom: 0;
+    width: 50px;
+    height: 65px;
+    border-radius: 0px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: #32589B;
+    font-size: 25px;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    padding-top: 20px;
+    color: white;
+    cursor: pointer;
+
+    &:hover{
+        background-color: #2d4e87;
+    }
+`

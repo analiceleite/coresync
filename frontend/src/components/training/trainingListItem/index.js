@@ -1,19 +1,21 @@
 import React from 'react';
-import { 
-  Container, 
-  ColorContainer, 
-  TrainingContent
-} from './styles.js'
+import * as S from './styles.js';
+import { IoCheckmark } from 'react-icons/io5';
 
-const TrainingListItem = ({bgColor}) => {
+const TrainingListItem = ({bgColor, active}) => {
   return (
-    <Container>
-        <ColorContainer color={bgColor} />
-        <TrainingContent>
+    <S.Container>
+        <S.ColorContainer color={bgColor} />
+        <S.TrainingContent>
             <h3>UI/UX</h3>
             <p>Esse treinamento envolve a área de design e experiência de usuário.</p>
-        </TrainingContent>
-    </Container>
+        </S.TrainingContent>
+        { active && 
+          <S.Check>
+            <IoCheckmark/>
+          </S.Check>
+        }
+    </S.Container>
   );
 };
 

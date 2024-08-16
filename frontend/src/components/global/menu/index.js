@@ -1,24 +1,32 @@
 import React from 'react';
-// import { useLocation } from 'react-router-dom';
-import { Aside, Navbar, MenuItem } from './styles';
+import { useLocation } from 'react-router-dom';
+import * as S from './styles';
+import { Link } from 'react-router-dom';
 
 import { IoLibraryOutline, IoPersonOutline, IoVideocamOutline, IoLogOutOutline  } from "react-icons/io5";
 
 const Menu = () => {
-    // const location = useLocation();
-    // const currentPath = location.pathname;
-    // console.log(currentPath)
+    const location = useLocation();
+    const currentPath = location.pathname;
     return (
-        <Aside>
-            <Navbar>
+        <S.Aside>
+            <S.Navbar>
                 <ul>
-                    <MenuItem><IoPersonOutline/></MenuItem>
-                    <MenuItem><IoLibraryOutline/></MenuItem>
-                    <MenuItem><IoVideocamOutline/></MenuItem>
+                    <S.MenuItem active={currentPath === '/profile' && true}>
+                        <Link to="/profile"><IoPersonOutline/></Link>
+                    </S.MenuItem>
+                    <S.MenuItem active={currentPath === '/training' && true}>
+                        <Link to="/training"><IoLibraryOutline/></Link>
+                    </S.MenuItem>
+                    <S.MenuItem active={currentPath === '/meeting' && true}>
+                        <Link to="/meeting"><IoVideocamOutline/></Link>
+                    </S.MenuItem>
                 </ul>
-                <a><IoLogOutOutline/></a>    
-            </Navbar>
-        </Aside>
+                <S.Logout>
+                    <IoLogOutOutline/>
+                </S.Logout>    
+            </S.Navbar>
+        </S.Aside>
     );
 };
 
