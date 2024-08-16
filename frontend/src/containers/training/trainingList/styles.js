@@ -26,7 +26,7 @@ export const Underline = styled.div`
         props => props.active === 0 ? 
         '48px'
         : 
-        '90px' 
+        '87px' 
     };
     transform: ${
         props => props.active === 0 ? 

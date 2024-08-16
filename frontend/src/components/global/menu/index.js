@@ -2,12 +2,14 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import * as S from './styles';
 import { Link } from 'react-router-dom';
+import { Aside, Navbar, MenuItem } from './styles';
 
 import { IoLibraryOutline, IoPersonOutline, IoVideocamOutline, IoLogOutOutline  } from "react-icons/io5";
 
 const Menu = () => {
     const location = useLocation();
     const currentPath = location.pathname;
+    
     return (
         <S.Aside>
             <S.Navbar>
@@ -23,8 +25,10 @@ const Menu = () => {
                     </S.MenuItem>
                 </ul>
                 <S.Logout>
-                    <IoLogOutOutline/>
-                </S.Logout>    
+                    <Link to='/'>
+                        <IoLogOutOutline/>
+                    </Link>   
+                </S.Logout>  
             </S.Navbar>
         </S.Aside>
     );

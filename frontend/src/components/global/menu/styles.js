@@ -39,7 +39,7 @@ export const MenuItem = styled.li`
     cursor: pointer;
 
     &:hover{
-        background-color: ${ props => props.active  ? '#2d4e87' : 'rgba(217, 217, 217, .5)' };
+        background-color: ${ props => props.active  ? '#01164d' : 'rgba(217, 217, 217, .8)' };
     }
 `;
 export const Logout = styled.a`
@@ -56,10 +56,14 @@ export const Logout = styled.a`
     align-items: start;
     justify-content: center;
     padding-top: 20px;
-    color: white;
     cursor: pointer;
 
-    &:hover{
-        background-color: #2d4e87;
+    a{
+        color: white;
     }
+
+    &:hover {
+        background-color: #01164d;
+    }
+    
 `

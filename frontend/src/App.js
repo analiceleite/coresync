@@ -1,4 +1,3 @@
-import './App.css';
 import Login from './pages/login';
 import Training from './pages/training';
 import Profile from './pages/profile';

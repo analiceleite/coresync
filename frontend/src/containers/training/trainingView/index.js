@@ -29,7 +29,7 @@ const TrainingView = () => {
         </S.VideoContainer>
       </S.Content>
       <S.PolkaDotsContainer>
-        <PolkaDots/>  
+        <PolkaDots isSmall />  
       </S.PolkaDotsContainer>
     </S.Container>
   );
