@@ -1,6 +1,7 @@
 import Login from './pages/login';
 import Training from './pages/training';
 import Profile from './pages/profile';
+import Meet from './pages/meet';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/training" element={<Training />} />
+          <Route path="/meet" element={<Meet />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </Router>

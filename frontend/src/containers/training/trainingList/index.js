@@ -3,8 +3,7 @@ import {
   NavbarTraining, 
   Underline, 
   NavbarTrainingItem, 
-  ListTraining,
-  Container 
+  ListTraining, 
 } from './styles';
 import TrainingListItem from '../../../components/training/trainingListItem';
 
