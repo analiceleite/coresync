@@ -1,21 +1,20 @@
 import styled from 'styled-components';
 
 export const NavbarTraining = styled.nav`
-    margin-block: 10px;  
-    padding-block: 10px;
+    margin-block: 20px;  
     position: relative;
-    
+    display: flex;
+    align-items: center;
+    height: 10%;
     ul {
         display: flex;
         gap: 40px;
     }
 `;
-
 export const NavbarTrainingItem = styled.li`
     font-size: 18px;
     cursor: pointer;
 `;
-
 export const Underline = styled.div`
     position: absolute;
     bottom: 0;
@@ -36,14 +35,14 @@ export const Underline = styled.div`
         'translateX(calc(100% / 4 * 3.9))' 
     };
 `;
-
 export const ListTraining = styled.div`
-    padding-top: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     padding-right:10px;
-    height: 320px;
+    height: 80%;
+    flex: 1;
     overflow: hidden;
     overflow-y: auto;
+    max-width: 650px;
 `

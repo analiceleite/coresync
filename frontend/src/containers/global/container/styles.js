@@ -5,6 +5,7 @@ export const Container = styled.div`
     height: 100vh;
     width: 100vw;
     min-width: 1024px;
+    min-height: 585px;
 `;
 export const Main = styled.main`
     flex: 1;
@@ -15,4 +16,9 @@ export const Main = styled.main`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 1260px){
+        padding-left: 0px;
+        padding-right: 20px;
+    }
 `;
