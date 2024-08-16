@@ -1,0 +1,38 @@
+.container-dots {
+    width: 150px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.blue-dots, .light-blue-dots, .yellow-dots {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%; 
+    margin: 0 15px;
+}
+
+.blue-dots {
+    background-color: #32589B;
+}
+
+.light-blue-dots {
+    background-color: #72C8F3;
+}
+
+.yellow-dots {
+    background-color: #FFBA08;
+}
+
+/* Estilos para a variação 'small' */
+.container-dots--small {
+    width: auto;
+}
+
+.dots--small {
+    width: 15px;
+    height: 15px;
+    margin: 0 0 0 15px;
+}
