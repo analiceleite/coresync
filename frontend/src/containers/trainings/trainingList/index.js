@@ -1,24 +1,37 @@
-import React from 'react';
-import './styles.css';
+import React, { useState } from 'react';
+import { NavbarTraining, Underline, NavbarTrainingItem, ListTraining } from './styles';
+import TrainingListItem from '../../../components/training/trainingListItem';
 
-const trainingList = () => {
+const TrainingList = () => {
+  const [itemActive, setItemActive] = useState(0)
+
+  console.log(itemActive)
   return (
-    <div>
-      <nav className='navbarTraining'>
+    <>
+      <NavbarTraining>
         <ul>
-          <li className='navbarTraining-item active'>
+          <NavbarTrainingItem 
+            onClick={() => {setItemActive(0)}}
+          >
             Ativos
-          </li>
-          <li className='navbarTraining-item'>
+          </NavbarTrainingItem>
+          <NavbarTrainingItem 
+            onClick={() => {setItemActive(1)}}
+          >
             Realizados
-          </li>
-          <div className='underline'></div> 
+          </NavbarTrainingItem>
+          <Underline active={itemActive}></Underline> 
         </ul>
-      </nav>
-      <div>
-      </div>
-    </div>
+      </NavbarTraining>
+      <ListTraining>
+        <TrainingListItem bgColor={'#72C8F3'} />
+        <TrainingListItem bgColor={'#FFBA08'} />
+        <TrainingListItem bgColor={'#32589B'} />
+        <TrainingListItem bgColor={'#72C8F3'} />
+        <TrainingListItem bgColor={'#FFBA08'} />
+      </ListTraining>
+    </>
   );
 };
 
-export default trainingList;
+export default TrainingList;

@@ -1,15 +1,15 @@
 import React from 'react';
-import './styles.css';
 import Menu from '../../../components/global/menu';
+import { Main, Container as ContainerStyle } from './styles';
 
 const Container = ({children}) => {
   return (
-    <div className='container'>
+    <ContainerStyle>
         <Menu/>
-        <main className='center'>
+        <Main>
             {children}
-        </main>
-    </div>
+        </Main>
+    </ContainerStyle>
   );
 };
 
