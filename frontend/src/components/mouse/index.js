@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './MouseFollower.css';
+import './styles.js';
+import { Follower } from './styles.js';
 
 const MouseFollower = () => {
     const [opacity, setOpacity] = useState(0);
@@ -29,7 +30,7 @@ const MouseFollower = () => {
         };
     }, []);
 
-    return <div id="mouse-follower" style={{ opacity }} />;
+    return <Follower id="mouse-follower" style={{ opacity }} />;
 };
 
 export default MouseFollower;

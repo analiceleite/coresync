@@ -16,6 +16,7 @@ export const PolkaDotsContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `
 export const Form = styled.form`
     margin-bottom: 30px;
@@ -38,6 +39,7 @@ export const Input = styled.input`
   border: 1px solid #ccc;
   border-left: 3px solid #FFBA08;
   outline: none;
+  cursor: default;
 `;
 
 export const Button = styled.button`

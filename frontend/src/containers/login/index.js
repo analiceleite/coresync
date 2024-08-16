@@ -1,4 +1,5 @@
 import React from 'react';
+import MouseFollower from '../../components/mouse';
 import Form from '../../components/login/form/form';
 import Logo from '../../assets/CoreSync-removebg.png'
 import * as S from './styles.js';
@@ -6,6 +7,7 @@ import * as S from './styles.js';
 const Login = () => {
   return (
     <S.LoginContainer>
+      <MouseFollower />
       <S.LeftContainer>
         <Form />
       </S.LeftContainer>

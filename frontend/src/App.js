@@ -1,5 +1,4 @@
 import './App.css';
-import MouseFollower from './components/mouse';
 import Login from './pages/login';
 import Training from './pages/training';
 import Profile from './pages/profile';
@@ -8,7 +7,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 function App() {
   return (
     <div className='App'>
-      <MouseFollower />
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
