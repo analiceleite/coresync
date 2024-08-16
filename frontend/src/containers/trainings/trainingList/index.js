@@ -20,7 +20,7 @@ const TrainingList = () => {
           >
             Realizados
           </NavbarTrainingItem>
-          <Underline active={itemActive}></Underline> 
+          <Underline active={itemActive} scenario="default"></Underline> 
         </ul>
       </NavbarTraining>
       <ListTraining>

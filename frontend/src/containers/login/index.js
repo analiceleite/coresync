@@ -1,42 +1,18 @@
-import React, { useState } from 'react';
-import './styles.css';
+import React from 'react';
+import Form from '../../components/login/form/form';
+import Logo from '../../images/CoreSync-removebg.png'
+import * as S from './styles.js';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Aqui você pode adicionar a lógica para autenticação
-    console.log('Email:', email);
-    console.log('Password:', password);
-  };
-
   return (
-    <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-    </div>
+    <S.LoginContainer>
+      <S.LeftContainer>
+        <Form />
+      </S.LeftContainer>
+      <S.RightContainer>
+        <S.Logo src={Logo} alt="CoreSync Logo" />
+      </S.RightContainer>
+    </S.LoginContainer>
   );
 };
 

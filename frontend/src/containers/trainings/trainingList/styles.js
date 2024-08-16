@@ -7,7 +7,7 @@ export const NavbarTraining = styled.nav`
     
     ul {
         display: flex;
-        gap: 30px;
+        gap: 40px;
     }
 `;
 
@@ -27,7 +27,7 @@ export const Underline = styled.div`
         props => props.active === 0 ? 
         '48px'
         : 
-        '82px' 
+        '90px' 
     };
     transform: ${
         props => props.active === 0 ? 
