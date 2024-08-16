@@ -19,13 +19,15 @@ export const FormGroup = styled.div`
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
+    width: 100%;
 `;
 
 export const FormRow = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 10px;
-    flex-wrap: wrap; /* Permite que os itens quebrem para a linha seguinte se necessário */
+    flex-wrap: wrap;
+    width: 100%;
 `;
 
 export const Label = styled.label`
@@ -40,6 +42,7 @@ export const InputWrapper = styled.div`
     border-radius: 10px;
     padding: 0px 10px;
     flex: 1;
+    background-color: #FBFBFB;
     max-width: 100%;
 
     svg {
@@ -55,7 +58,8 @@ export const Input = styled.input`
     border-radius: 5px;
     font-size: 16px;
     outline: none;
-    width: 100%; /* Garante que o input preencha o espaço disponível */
+    width: 100%;
+    background-color: #FBFBFB;
 
     &::placeholder {
         color: #aaa;
@@ -70,6 +74,7 @@ export const Textarea = styled.textarea`
     resize: vertical;
     min-height: 100px;
     outline: none;
+    background-color: #FBFBFB;
 
     &::placeholder {
         color: #aaa;
@@ -90,4 +95,19 @@ export const Button = styled.button`
   &:hover {
     background-color: #01164d;
   }
+`;
+
+export const Select = styled.select`
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    width: 100%;
+    background-color: #FBFBFB;
+
+    &::placeholder {
+        color: #aaa;
+    }
 `;

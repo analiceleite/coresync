@@ -32,7 +32,14 @@ const MeetForm = () => {
           <S.Label htmlFor="duracao">Duração</S.Label>
           <S.InputWrapper>
             <IoHourglass />
-            <S.Input type="text" id="duracao" placeholder="Duração" />
+            <S.Select id="duracao">
+              <option value="15min">15 minutos</option>
+              <option value="30min">30 minutos</option>
+              <option value="45min">45 minutos</option>
+              <option value="60min">1 hora</option>
+              <option value="90min">1 hora e 30 minutos</option>
+              <option value="120min">2 horas</option>
+            </S.Select>
           </S.InputWrapper>
         </S.FormGroup>
       </S.FormRow>
