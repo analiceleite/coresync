@@ -5,7 +5,7 @@ export const NavbarTraining = styled.nav`
     position: relative;
     display: flex;
     align-items: center;
-    height: 10%;
+    height: 40px;
     ul {
         display: flex;
         gap: 40px;
