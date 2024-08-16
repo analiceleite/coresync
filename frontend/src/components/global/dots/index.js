@@ -12,3 +12,4 @@ const PolkaDots = ({ isSmall }) => {
 };
 
 export default PolkaDots;
+    
