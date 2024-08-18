@@ -1,6 +1,6 @@
 import React from 'react';
 import Title from '../../components/global/title';
-import BaseContainer from '../../containers/global/container';
+import BaseContainer from '../../containers/global/baseContainer';
 import TrainingList from '../../containers/training/trainingList';
 import { TitleContainer, Container, TrainingListContainer } from './styles.js';
 import TrainingView from '../../containers/training/trainingView/index.js';

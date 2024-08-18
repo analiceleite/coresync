@@ -13,11 +13,15 @@ export const Container = styled.section`
         width: 50%;
         height: 100%;
     }
+
+    @media (max-width: 1100px){
+        gap: 10px;
+    }
 `;
 export const TitleContainer = styled.div`
-    
     height: 20%;
 `;
-export const TrainingListContainer = styled.div`
+
+export const MeetListContainer = styled.div`
     height: 80%;
-`;
+`;  

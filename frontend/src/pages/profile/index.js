@@ -1,5 +1,5 @@
 import React from 'react';
-import BaseContainer from '../../containers/global/container';
+import BaseContainer from '../../containers/global/baseContainer';
 import IconProfile from '../../containers/profile/iconProfile'
 import FormProfile from '../../containers/profile/formProfile';
 import { Container} from './styles.js';

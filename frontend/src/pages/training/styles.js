@@ -9,9 +9,13 @@ export const Container = styled.section`
     max-width: 1550px;
     align-items: center;
     
-    > div {
+    & > div {
         width: 50%;
         height: 100%;
+    }
+
+    @media (max-width: 1100px){
+        gap: 10px;
     }
 `;
 export const TitleContainer = styled.div`

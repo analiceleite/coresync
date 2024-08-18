@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    height: auto;
-    max-width: 620px;
+    height: 100%;
+    max-width: 600px;
     border-radius: 20px;
     box-shadow: 1px 1px 8px rgba(0,0,0,.25);
     padding: 35px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 
     @media (max-width: 1260px){
         padding-inline: 20px;
@@ -19,20 +20,7 @@ export const FormGroup = styled.div`
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
-    width: 100%;
-`;
-
-export const FormRow = styled.div`
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    flex-wrap: wrap;
-    width: 100%;
-`;
-
-export const Label = styled.label`
-    font-size: 16px;
-    margin-bottom: 5px;
+    
 `;
 
 export const InputWrapper = styled.div`
@@ -40,22 +28,47 @@ export const InputWrapper = styled.div`
     align-items: center;
     border: 1px solid #d9d9d9;
     border-radius: 10px;
-    padding: 0px 10px;
+    padding: 0px 0px 0px 10px;
     flex: 1;
     background-color: #FBFBFB;
     max-width: 100%;
+    overflow: hidden;
 
     svg {
-        margin-right: 10px;
         color: #333;
     }
+`;
+
+export const FormRow = styled.div`
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+
+    ${FormGroup} {
+        width: 34.5%;
+    }
+
+    ${FormGroup}:nth-of-type(1) {
+        ${InputWrapper}{
+            padding: 0px !important;
+        }
+    }
+
+    ${FormGroup}:nth-of-type(2) {
+        width: 26%;
+    }
+`;
+
+export const Label = styled.label`
+    font-size: 16px;
+    margin-bottom: 5px;
 `;
 
 export const Input = styled.input`
     flex: 1;
     padding: 8px;
     border: none;
-    border-radius: 5px;
     font-size: 16px;
     outline: none;
     width: 100%;
@@ -72,7 +85,7 @@ export const Textarea = styled.textarea`
     border: 1px solid #ddd;
     font-size: 16px;
     resize: vertical;
-    min-height: 100px;
+    min-height: 90px;
     outline: none;
     background-color: #FBFBFB;
 

@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const Aside = styled.aside`
-    height: 100%;
-    min-height: 100vh;
+    height: 100vh;
     width: 130px;
     display: flex;
     justify-content: center;
 `;
 export const Navbar = styled.nav`
     height: 100%;
+    min-height: 360px;
     width: 100px;
     display: flex;
     flex-direction: column;
@@ -23,7 +23,6 @@ export const Navbar = styled.nav`
     }
 `;
 export const MenuItem = styled.li`
-    padding: 10px;
     border-radius: 50%;
     width: 50px;
     height: 50px;
