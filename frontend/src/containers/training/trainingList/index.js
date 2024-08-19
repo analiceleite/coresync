@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { 
-  NavbarTraining, 
-  Underline, 
-  NavbarTrainingItem, 
-  ListTraining, 
+import {
+  NavbarTraining,
+  Underline,
+  NavbarTrainingItem,
+  ListTraining,
 } from './styles';
 import TrainingListItem from '../../../components/training/trainingListItem';
 
@@ -14,20 +14,20 @@ const TrainingList = () => {
     <>
       <NavbarTraining>
         <ul>
-          <NavbarTrainingItem 
-            onClick={() => {setItemActive(0)}}
+          <NavbarTrainingItem
+            onClick={() => { setItemActive(0) }}
           >
             Ativos
           </NavbarTrainingItem>
-          <NavbarTrainingItem 
-            onClick={() => {setItemActive(1)}}
+          <NavbarTrainingItem
+            onClick={() => { setItemActive(1) }}
           >
             Realizados
           </NavbarTrainingItem>
-          <Underline active={itemActive} scenario="default"></Underline> 
+          <Underline active={itemActive} scenario="default"></Underline>
         </ul>
-      </NavbarTraining> 
-      <ListTraining> 
+      </NavbarTraining>
+      <ListTraining>
         <TrainingListItem bgColor={'#72C8F3'} active />
         <TrainingListItem bgColor={'#FFBA08'} />
         <TrainingListItem bgColor={'#32589B'} />
