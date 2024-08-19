@@ -8,23 +8,30 @@ import {
 import TrainingListItem from '../../../components/training/trainingListItem';
 
 const TrainingList = () => {
-  const [itemActive, setItemActive] = useState(0)
+  const [underlineMove, setUnderlineMove] = useState("translateX(calc(100% / 4 * 0))");
+  const [underlineSize, setUnderlineSize] = useState("48px");
 
   return (
     <>
       <NavbarTraining>
         <ul>
-          <NavbarTrainingItem
-            onClick={() => { setItemActive(0) }}
+          <NavbarTrainingItem 
+            onClick={() => {
+              setUnderlineMove("translateX(calc(100% / 4 * 0))");
+              setUnderlineSize("48px");
+            }}
           >
             Ativos
           </NavbarTrainingItem>
-          <NavbarTrainingItem
-            onClick={() => { setItemActive(1) }}
+          <NavbarTrainingItem 
+            onClick={() => {
+              setUnderlineMove("translateX(calc(100% / 4 * 4.4))");
+              setUnderlineSize("82px");
+            }}
           >
             Realizados
           </NavbarTrainingItem>
-          <Underline active={itemActive} scenario="default"></Underline>
+          <Underline move={underlineMove} size={underlineSize} scenario="default"></Underline> 
         </ul>
       </NavbarTraining>
       <ListTraining>

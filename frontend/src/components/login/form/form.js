@@ -12,6 +12,8 @@ import Popup from '../../../components/global/popup';
 const Form = () => {
     //* Password visibility functions
     const [itemActive, setItemActive] = useState(0);
+    const [underlineMove, setUnderlineMove] = useState("translateX(calc(100% / 4 * 0))");
+    const [underlineSize, setUnderlineSize] = useState("46px");
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
@@ -86,13 +88,25 @@ const Form = () => {
             <S.PolkaDotsContainer>
                 <NavbarTraining>
                     <ul>
-                        <NavbarTrainingItem onClick={() => setItemActive(0)}>
+                        <NavbarTrainingItem
+                            onClick={() => { 
+                                setUnderlineMove("translateX(calc(100% / 4 * 0))");
+                                setUnderlineSize("46px"); 
+                                setItemActive(0);
+                            }}
+                        >
                             Entrar
                         </NavbarTrainingItem>
-                        <NavbarTrainingItem onClick={() => setItemActive(1)}>
+                        <NavbarTrainingItem
+                            onClick={() => { 
+                                setUnderlineMove("translateX(calc(100% / 4 * 4.8))");
+                                setUnderlineSize("73px");
+                                setItemActive(1);
+                            }}
+                        >
                             Cadastrar
                         </NavbarTrainingItem>
-                        <Underline active={itemActive} scenario="login"></Underline>
+                        <Underline move={underlineMove} size={underlineSize} scenario="login"></Underline>
                     </ul>
                 </NavbarTraining>
                 <PolkaDots isSmall={true} />

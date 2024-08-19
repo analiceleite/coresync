@@ -6,7 +6,7 @@ export const Container = styled.div`
     border-radius: 20px;
     box-shadow: 1px 1px 8px rgba(0,0,0,.25);
     padding: 35px;
-
+    margin: auto;
     @media (max-width: 1260px){
         padding-inline: 20px;
     }
@@ -20,12 +20,18 @@ export const Header = styled.header`
 
     & > :first-child{
         width: 60%;
+        @media(max-width: 1100px){
+            width: 55%;
+        }
     }
     & > :nth-child(2){
         width: 40%;
         display: flex;
         padding-top: 5px;
         justify-content: end;
+        @media(max-width: 1100px){
+            width: 45%;
+        }
     }
     & > div{
         height: 100%;

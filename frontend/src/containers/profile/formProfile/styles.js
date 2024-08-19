@@ -1,24 +1,23 @@
 import styled from 'styled-components';
 
 export const Background = styled.div`
-    height: 600px;
-    width: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%;
     justify-content: center;
 `;
 
 export const ContainerForm = styled.div`
-    width: 550px;
-    height: 450px;
+    width: 100%;
     border-radius: 20px;
-    box-shadow: 1px 1px 10px rgb(215 215 215 / 27%);
+    box-shadow: 1px 1px 8px rgba(0,0,0,.25);
+    padding: 35px;
     background-color: white; 
     display: flex;
     flex-direction: column;
-    padding: 50px;
     margin-bottom: 35px;
+    max-width: 500px;
 `;
 
 export const ButtonEdit = styled.div`
@@ -38,8 +37,42 @@ export const ButtonEdit = styled.div`
     }
 `;
 
+export const ButtonCancel = styled.div`
+    width: 150px;
+    height: 55px;
+    border-radius: 15px;
+    background-color: #FFBA08;
+    cursor: pointer;
+    color: white;
+    padding: 15px;
+    font-weight: bold;
+    border: none;
+    text-align: center;
+
+    &:hover{
+        background-color: #C3982A;
+    }
+`;
+
+export const ButtonConfirm = styled.div`
+    width: 150px;
+    height: 55px;
+    border-radius: 15px;
+    background-color: #32589B;
+    cursor: pointer;
+    color: white;
+    padding: 15px;
+    font-weight: bold;
+    border: none;
+    text-align: center;
+
+    &:hover{
+        background-color: #01164D;
+    }
+`;
+
 export const FormGroup = styled.div`
-    margin: 25px 0px 25px 0px;  
+    margin: 15px 0px 15px 0px;  
 `;
 
 export const Label = styled.div`
@@ -48,13 +81,26 @@ export const Label = styled.div`
     font-size: 16px;
 `;
 
-export const Field = styled.div`
-    width: 50vh;
+export const Field = styled.input`
+    width: 100%;
     height: 38px;
     padding: 8px;
     font-size: 15px;
     border-radius: 10px;
     color: #353548;
     background-color: rgb(217 217 217 / 10%);
-    border-left: 15px solid #72C8F3;
+    border-top: 1px solid #D9D9D9;
+    border-right: 1px solid #D9D9D9;
+    border-bottom: 1px solid #D9D9D9;
+    border-left: 15px solid ${props => props.color};
+    outline: none;
+    caret-color: ${ props => props.edit ? 'black' : 'transparent'};
+    cursor: ${ props => props.edit ? '' : 'default'};
 `;
+
+export const ContainerButtons = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+`

@@ -12,12 +12,11 @@ const MeetForm = () => {
           <S.Input type="text" id="titulo" placeholder="Digite o título" />
         </S.InputWrapper>
       </S.FormGroup>
-
       <S.FormRow>
         <S.FormGroup>
           <S.Label htmlFor="data">Data</S.Label>
           <S.InputWrapper>
-            <IoCalendar />
+            {/* <IoCalendar /> */}
             <S.Input type="date" id="data" />
           </S.InputWrapper>
         </S.FormGroup>
@@ -33,12 +32,12 @@ const MeetForm = () => {
           <S.InputWrapper>
             <IoHourglass />
             <S.Select id="duracao">
-              <option value="15min">15 minutos</option>
-              <option value="30min">30 minutos</option>
-              <option value="45min">45 minutos</option>
-              <option value="60min">1 hora</option>
-              <option value="90min">1 hora e 30 minutos</option>
-              <option value="120min">2 horas</option>
+              <option value="15min">15min</option>
+              <option value="30min">30min</option>
+              <option value="45min">45min</option>
+              <option value="60min">1h</option>
+              <option value="90min">1h e 30min </option>
+              <option value="120min">2h</option>
             </S.Select>
           </S.InputWrapper>
         </S.FormGroup>

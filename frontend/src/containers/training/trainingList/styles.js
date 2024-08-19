@@ -23,16 +23,10 @@ export const Underline = styled.div`
     background-color: #FFBA08;    
     transition: transform 0.3s ease;
     width: ${
-        props => props.active === 0 ? 
-        '48px'
-        : 
-        '87px' 
+        props => props.size
     };
     transform: ${
-        props => props.active === 0 ? 
-        'translateX(calc(100% / 4 * 0))'
-        : 
-        'translateX(calc(100% / 4 * 3.9))' 
+        props => props.move
     };
 `;
 export const ListTraining = styled.div`
