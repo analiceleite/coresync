@@ -21,4 +21,11 @@ export const PositionSelectIcon = styled.div`
     position: relative;
     bottom: 45px;
     left: 70px;
+    
+    > label{
+        cursor: pointer;
+    }
+    > input {
+        display: none;
+    }
 `;
