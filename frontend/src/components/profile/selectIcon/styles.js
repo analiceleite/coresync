@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const ContainerSelectIcon = styled.div`
-    height: 60px;
-    width: 60px;
+    height: 50px;
+    width: 50px;
     border-radius: 50px;
     background-color: #32589B;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
+    font-size: 24px;
     color: #FFFFFF;
     cursor: pointer;
 
@@ -18,9 +18,7 @@ export const ContainerSelectIcon = styled.div`
 `;
 
 export const PositionSelectIcon = styled.div`
-    height: 60px;
-    width: 60px;
     position: relative;
     bottom: 45px;
-    left: 100px;
+    left: 70px;
 `;

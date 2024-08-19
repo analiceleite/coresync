@@ -7,14 +7,12 @@ import { Container} from './styles.js';
 const Profile = () => {
     return (
         <BaseContainer>
-            <Container>
-                <div>
-                    <IconProfile />
-                </div>
-                <div>
-                    <FormProfile/>
-                </div>
-            </Container>
+            <div>
+                <IconProfile />
+            </div>
+            <div>
+                <FormProfile/>
+            </div>
         </BaseContainer>
     );
 };

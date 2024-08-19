@@ -8,7 +8,7 @@ import TrainingView from '../../containers/training/trainingView/index.js';
 const Training = () => {
   return (
     <BaseContainer>
-      <Container>
+      {/* <Container> */}
         <div>
           <TitleContainer>
             <Title text="Acompanhe aqui seus"/>
@@ -21,7 +21,7 @@ const Training = () => {
         <div>
           <TrainingView/>  
         </div>
-      </Container>
+      {/* </Container> */}
     </BaseContainer>
   );
 };

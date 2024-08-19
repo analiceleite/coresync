@@ -7,26 +7,22 @@ import MeetList from '../../containers/meet/meetList/index.jsx';
 import PopupMeet from '../../components/meet/popupMeet/index.jsx';
 
 const Meet = () => {
-  
-
   return (
   <>
     <PopupMeet id={"1"} />
     <BaseContainer>
-      <Container>
-        <div>
-          <TitleContainer>
-            <Title text="Agende aqui sua"/>
-            <Title text="reunião!" color="dark-blue"/>
-          </TitleContainer>
-          <MeetListContainer>
-            <MeetList/>
-          </MeetListContainer>
-        </div>
-        <div>
-          <MeetForm/>  
-        </div>
-      </Container>
+      <div>
+        <TitleContainer>
+          <Title text="Agende aqui sua"/>
+          <Title text="reunião!" color="dark-blue"/>
+        </TitleContainer>
+        <MeetListContainer>
+          <MeetList/>
+        </MeetListContainer>
+      </div>
+      <div>
+        <MeetForm/>  
+      </div>
     </BaseContainer>
   </>
   );

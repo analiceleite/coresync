@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const ContainerProfile = styled.div`
-    width: 600px;
-    height: 600px;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,7 +10,6 @@ export const ContainerProfile = styled.div`
 `;
 
 export const ContainerNameUser = styled.div`
-    width: 600px;
     height: 50px;
     display: flex;
     align-items: center;
@@ -18,7 +17,7 @@ export const ContainerNameUser = styled.div`
 `;
 
 export const ContainerTitle = styled.div`
-    width: 600px;
+    width: 100%;
     height: 50px;
     display: flex;
     flex-direction: column;

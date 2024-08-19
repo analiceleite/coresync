@@ -7,7 +7,9 @@ const BaseContainer = ({children}) => {
     <S.Container>
         <Menu/>
         <S.Main>
+          <S.Content>
             {children}
+          </S.Content>
         </S.Main>
     </S.Container>
   );
