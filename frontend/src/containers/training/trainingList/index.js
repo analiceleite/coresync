@@ -35,8 +35,8 @@ const TrainingList = () => {
         </ul>
       </NavbarTraining> 
       <ListTraining> 
-        <TrainingListItem bgColor={'#72C8F3'} active />
-        <TrainingListItem bgColor={'#FFBA08'} />
+        <TrainingListItem bgColor={'#72C8F3'} active="true" />
+        <TrainingListItem bgColor={'#FFBA08'} active="true" />
         <TrainingListItem bgColor={'#32589B'} />
         <TrainingListItem bgColor={'#72C8F3'} />
         <TrainingListItem bgColor={'#FFBA08'} />

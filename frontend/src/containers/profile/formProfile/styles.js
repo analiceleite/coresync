@@ -94,8 +94,8 @@ export const Field = styled.input`
     border-bottom: 1px solid #D9D9D9;
     border-left: 15px solid ${props => props.color};
     outline: none;
-    caret-color: ${ props => props.edit ? 'black' : 'transparent'};
-    cursor: ${ props => props.edit ? '' : 'default'};
+    caret-color: ${ props => props.$edit ? 'black' : 'transparent'};
+    cursor: ${ props => props.$edit ? '' : 'default'};
 `;
 
 export const ContainerButtons = styled.div`

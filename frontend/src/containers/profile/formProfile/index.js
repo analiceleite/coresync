@@ -24,11 +24,10 @@ const FormProfile = () => {
     return (
         <S.Background>
             <S.ContainerForm>
-                
                 <S.FormGroup>
                     <S.Label> Nome </S.Label>
                     <S.Field 
-                        edit={isEdit} 
+                        $edit={isEdit.toString()} 
                         value={ isEdit ? form.name : 'JoaoPinottLeiteLima'}
                         name="name"
                         onChange={handleChange}
@@ -39,7 +38,7 @@ const FormProfile = () => {
                 <S.FormGroup>
                     <S.Label> Senha </S.Label>
                     <S.Field 
-                        edit={isEdit} 
+                        $edit={isEdit.toString()} 
                         value={isEdit ? form.password : 'JoaoPinottLeiteLima'} 
                         name="password"
                         type='password'
@@ -53,7 +52,7 @@ const FormProfile = () => {
                     <S.FormGroup>
                         <S.Label> Confirmar senha </S.Label>
                         <S.Field 
-                            edit={isEdit}
+                            $edit={isEdit.toString()}
                             value={form.confirmPassword} 
                             name="confirmPassword"
                             type='password'
@@ -66,7 +65,7 @@ const FormProfile = () => {
                 <S.FormGroup>
                     <S.Label> Email </S.Label>
                     <S.Field 
-                        edit={isEdit} 
+                        $edit={isEdit.toString()} 
                         value={isEdit ? form.email : 'JoaoPinottLeiteLima@gmail.com'}
                         name="email" 
                         type='email' 
