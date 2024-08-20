@@ -96,15 +96,9 @@ const FormProfile = () => {
             <S.ContainerForm>
                 <S.FormGroup>
                     <S.Label> Nome </S.Label>
-<<<<<<< HEAD
-                    <S.Field 
-                        $edit={isEdit.toString()} 
-                        value={ isEdit ? form.name : 'JoaoPinottLeiteLima'}
-=======
                     <S.Field
-                        edit={isEdit}
+                        $edit={isEdit}
                         value={form.name}
->>>>>>> 0782ce847ba6573b81e9b668ed6319cd63d78df7
                         name="name"
                         onChange={handleChange}
                         color='#72C8F3'
@@ -113,15 +107,9 @@ const FormProfile = () => {
 
                 <S.FormGroup>
                     <S.Label> Senha </S.Label>
-<<<<<<< HEAD
-                    <S.Field 
-                        $edit={isEdit.toString()} 
-                        value={isEdit ? form.password : 'JoaoPinottLeiteLima'} 
-=======
                     <S.Field
-                        edit={isEdit}
+                        $edit={isEdit}
                         value={form.password}
->>>>>>> 0782ce847ba6573b81e9b668ed6319cd63d78df7
                         name="password"
                         type='password'
                         onChange={handleChange}
@@ -132,15 +120,9 @@ const FormProfile = () => {
                 {isEdit && (
                     <S.FormGroup>
                         <S.Label> Confirmar senha </S.Label>
-<<<<<<< HEAD
-                        <S.Field 
-                            $edit={isEdit.toString()}
-                            value={form.confirmPassword} 
-=======
                         <S.Field
-                            edit={isEdit}
+                            $edit={isEdit}
                             value={form.confirmPassword}
->>>>>>> 0782ce847ba6573b81e9b668ed6319cd63d78df7
                             name="confirmPassword"
                             type='password'
                             onChange={handleChange}
@@ -151,21 +133,12 @@ const FormProfile = () => {
 
                 <S.FormGroup>
                     <S.Label> Email </S.Label>
-<<<<<<< HEAD
-                    <S.Field 
-                        $edit={isEdit.toString()} 
-                        value={isEdit ? form.email : 'JoaoPinottLeiteLima@gmail.com'}
-                        name="email" 
-                        type='email' 
-                        onChange={handleChange}  
-=======
                     <S.Field
-                        edit={isEdit}
+                        $edit={isEdit}
                         value={form.email}
                         name="email"
                         type='email'
                         onChange={handleChange}
->>>>>>> 0782ce847ba6573b81e9b668ed6319cd63d78df7
                         color='#32589B'
                     />
                 </S.FormGroup>
