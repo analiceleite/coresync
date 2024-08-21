@@ -36,9 +36,9 @@ export const getUser = async () => {
     try {
         const response = await axios.get(`${API_BASE_URL}/api/user/auth/`, {
             withCredentials: true,
-            headers: {
-                'Authorization': `Token ${localStorage.getItem('authToken')}` 
-            }
+            // headers: {
+            //     'Authorization': `Token ${localStorage.getItem('authToken')}` 
+            // }
         });
         return response.data;
     } catch (error) {
@@ -51,9 +51,9 @@ export const getUser = async () => {
 export const updateUser = async (userData) => {
     try {
         const response = await axios.put(`${API_BASE_URL}/api/update-user/`, userData, {
-            headers: {
-                'Authorization': `Token ${localStorage.getItem('token')}` // Ou o método de autenticação que você estiver usando
-            }
+            // headers: {
+            //     'Authorization': `Token ${localStorage.getItem('user_token')}`,
+            // }
         });
         return response.data; // Retorna os dados atualizados
     } catch (error) {
@@ -65,9 +65,9 @@ export const updateUser = async (userData) => {
 export const updatePassword = async (passwordData) => {
     try {
         const response = await axios.put(`${API_BASE_URL}/api/update-password/`, passwordData, {
-            headers: {
-                'Authorization': `Token ${localStorage.getItem('token')}` // Ou o método de autenticação que você estiver usando
-            }
+            // headers: {
+            //     'Authorization': `Token ${localStorage.getItem('user_token')}`,
+            // }
         });
         return response.data; // Retorna a confirmação da atualização
     } catch (error) {
@@ -79,14 +79,11 @@ export const uploadImage = async (file) => {
     const formData = new FormData();
     formData.append('file', file);
 
-    const user_token = localStorage.getItem('user_token');
-    console.log(user_token)
-
     try {
         const response = await axios.post('http://127.0.0.1:8000/perfil/profileImage/', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
-                'Authorization': `Token ${user_token}`,
+                'Authorization': `Token ${localStorage.getItem('user_token')}`,
             },
         });
         console.log('Imagem enviada com sucesso! ' + response.data);
