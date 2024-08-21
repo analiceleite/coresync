@@ -27,7 +27,7 @@ class ProfileImageViewSet(viewsets.ModelViewSet):
         with open(file_path, 'wb+') as media:
             for chunk in file.chunks():
                 media.write(chunk)
-
+                
         try:
             user = request.user
         except:
