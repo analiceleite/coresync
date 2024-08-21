@@ -74,7 +74,7 @@ export const updatePassword = async (passwordData) => {
         throw error; // Lança o erro para tratamento no componente
     }
 };
-
+//Função para upload da imagem de perfil
 export const uploadImage = async (file) => {
     const formData = new FormData();
     formData.append('file', file);
@@ -93,5 +93,24 @@ export const uploadImage = async (file) => {
         if (error.response) {
             console.error('Dados do erro:', error.response.data);
         }
+    }
+};
+
+//Função para requisição da imagem de perfil
+export const getProfileImage = async () => {
+    try {
+        const response = await axios.get(`${API_BASE_URL}/perfil/profileImage/`, {
+            headers: {
+                'Authorization': `Token ${localStorage.getItem('user_token')}`,
+            },
+            responseType: 'blob',
+        });
+        console.log("Sucesso!")
+        console.log(response.data)
+        const url = URL.createObjectURL(new Blob([response.data]));
+        console.log(url)
+        return url
+    } catch (error) {
+        throw error; // Lança o erro para tratamento no componente
     }
 };
