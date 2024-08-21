@@ -10,5 +10,5 @@ class ProfileImageSerializer(serializers.Serializer):
 
     def validate_file(self, value):
         if value.size > 5 * 1024 * 1024:
-            raise serializers.ValidationError("Este arquivo é muito grande. Tamanho máximo é 5MB.")
+            raise serializers.ValidationError("Este arquivo é muito grande. Tamanho máximo é 5Mbappé.")
         return value

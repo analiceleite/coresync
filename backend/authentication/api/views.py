@@ -6,8 +6,10 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .serializers import UserSerializer
 from rest_framework.authtoken.models import Token
+from rest_framework.permissions import AllowAny
 
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def login_user(request):
     username = request.data.get('username')
     password = request.data.get('password')
@@ -22,10 +24,10 @@ def login_user(request):
         token, created = Token.objects.get_or_create(user=user)
         serializer = UserSerializer(user)
         return Response({'token': token.key, 'user':serializer.data}, status=status.HTTP_200_OK)
-    
     return Response({'error': 'Credenciais inválidas'}, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def register_user(request):
     username = request.data.get('username')
     password = request.data.get('password')
@@ -42,9 +44,9 @@ def register_user(request):
     
     return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-# Para visualização dos dados 
-
+# Para visualização dos dados
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def list_users(request):
     users = User.objects.all()
     serializer = UserSerializer(users, many=True)
@@ -69,8 +71,8 @@ def get_authenticated_user(request):
     return Response(serializer.data)
 
 # Atualização desses dados
-
 @api_view(['PUT'])
+@permission_classes([AllowAny])
 def update_user(request, user_id):
     try:
         user = User.objects.get(pk=user_id)
@@ -84,6 +86,7 @@ def update_user(request, user_id):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['PUT'])
+@permission_classes([AllowAny])
 def update_password(request, user_id):
     try:
         user = User.objects.get(pk=user_id)

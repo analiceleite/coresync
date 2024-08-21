@@ -31,7 +31,7 @@ class ProfileImageViewSet(viewsets.ModelViewSet):
         try:
             user = request.user
         except:
-            raise Exception("Usuário não encontrado!")
+            return Response({"message":"Usuário não encontrado!"}, status=status.HTTP_400_BAD_REQUEST)
         
         try:
             image = ProfileImage.objects.get(user=user)
