@@ -1,7 +1,12 @@
 from rest_framework import serializers
+from .models import ProfileImage
 
-class ProfileImageUploadSerializer(serializers.Serializer):
+class ProfileImageSerializer(serializers.Serializer):
     file = serializers.ImageField()
+
+    class Meta:
+        model = ProfileImage
+        fields = ['file']  
 
     def validate_file(self, value):
         if value.size > 5 * 1024 * 1024:

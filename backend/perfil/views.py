@@ -1,25 +1,36 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import ProfileImageUploadSerializer
+from .serializers import ProfileImageSerializer
+from .models import ProfileImage
 import os
 from rest_framework.decorators import api_view
 from django.conf import settings
+from rest_framework import viewsets
 
 
-class ProfileImageUploadView(APIView):
-    def post(self, request, *args, **kwargs):
+class ProfileImageViewSet(viewsets.ModelViewSet):
+    queryset = ProfileImage.objects.all()
+    serializer_class = ProfileImageSerializer
+
+    def create(self, request, *args, **kwargs):
         print("----------------------- i'm here -----------------------")
-        serializer = ProfileImageUploadSerializer(data=request.data)
+        serializer = self.get_serializer(data=data)
+        serializer.is_valid(raise_exception=True)
 
-        if serializer.is_valid():
-            file = serializer.validated_data['file']
-            
-            with open(os.path.join(settings.MEDIA_ROOT, f'profile/{file.name}'), 'wb+') as media:
-                for chunk in file.chunks():
-                    media.write(chunk)
+        file = request.data['file']
+        
+        file_path = os.path.join(settings.MEDIA_ROOT, 'profile', file.name)
 
-            print("----------------------- Succefully -----------------------")    
-            return Response({"message": "Imagem salva com sucesso!"}, status=status.HTTP_201_CREATED)
+        with open(file_path, 'wb+') as media:
+            for chunk in file.chunks():
+                media.write(chunk)
+
+        profile_image = ProfileImage(file_path=file_path, user=request.user)
+        profile_image.save()
+
+        serializer = self.get_serializer(profile_image)
+
+        print("----------------------- Succefully -----------------------")    
+        return Response({"message": "Imagem salva com sucesso!"}, status=status.HTTP_201_CREATED)
         print("----------------------- Client error -----------------------")
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

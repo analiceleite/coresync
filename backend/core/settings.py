@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     # Apps
     'authentication',
     'core',
+    'perfil'
 ]
 
 CORS_ALLOWED_ORIGINS = [
