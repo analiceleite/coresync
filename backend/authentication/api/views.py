@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .serializers import UserSerializer
+from rest_framework.authtoken.models import Token
 
 @api_view(['POST'])
 def login_user(request):
@@ -18,8 +19,9 @@ def login_user(request):
     
     if user is not None:
         login(request, user)
+        token, created = Token.objects.get_or_create(user=user)
         serializer = UserSerializer(user)
-        return Response(serializer.data)
+        return Response({'token': token.key, 'user':serializer.data}, status=status.HTTP_200_OK)
     
     return Response({'error': 'Credenciais inválidas'}, status=status.HTTP_400_BAD_REQUEST)
 

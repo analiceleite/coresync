@@ -14,13 +14,13 @@ const Menu = () => {
         <S.Aside>
             <S.Navbar>
                 <ul>
-                    <S.MenuItem active={currentPath === '/profile' && true}>
+                    <S.MenuItem $active={currentPath === '/profile' && 'true'}>
                         <Link to="/profile"><IoPersonOutline/></Link>
                     </S.MenuItem>
-                    <S.MenuItem active={currentPath === '/training' && true}>
+                    <S.MenuItem $active={currentPath === '/training' && 'true'}>
                         <Link to="/training"><IoLibraryOutline/></Link>
                     </S.MenuItem>
-                    <S.MenuItem active={currentPath === '/meeting' && true}>
+                    <S.MenuItem $active={currentPath === '/meeting' && 'true'}>
                         <Link to="/meeting"><IoVideocamOutline/></Link>
                     </S.MenuItem>
                 </ul>

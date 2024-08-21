@@ -97,7 +97,7 @@ const FormProfile = () => {
                 <S.FormGroup>
                     <S.Label> Nome </S.Label>
                     <S.Field
-                        edit={isEdit}
+                        $edit={isEdit}
                         value={form.name}
                         name="name"
                         onChange={handleChange}
@@ -108,7 +108,7 @@ const FormProfile = () => {
                 <S.FormGroup>
                     <S.Label> Senha </S.Label>
                     <S.Field
-                        edit={isEdit}
+                        $edit={isEdit}
                         value={form.password}
                         name="password"
                         type='password'
@@ -121,7 +121,7 @@ const FormProfile = () => {
                     <S.FormGroup>
                         <S.Label> Confirmar senha </S.Label>
                         <S.Field
-                            edit={isEdit}
+                            $edit={isEdit}
                             value={form.confirmPassword}
                             name="confirmPassword"
                             type='password'
@@ -134,7 +134,7 @@ const FormProfile = () => {
                 <S.FormGroup>
                     <S.Label> Email </S.Label>
                     <S.Field
-                        edit={isEdit}
+                        $edit={isEdit}
                         value={form.email}
                         name="email"
                         type='email'

@@ -31,17 +31,17 @@ export const MenuItem = styled.li`
     align-items: center;
     font-size: 20px;
     margin-block: 10px;
-    background-color: ${ props => props.active  ? '#32589B' : 'rgba(217, 217, 217, .3)' };
+    background-color: ${ props => props.$active  ? '#32589B' : 'rgba(217, 217, 217, .3)' };
     a{
-        color: ${ props => props.active  ? 'white' : 'rgba(53,53,72,.8)' };
+        color: ${ props => props.$active  ? 'white' : 'rgba(53,53,72,.8)' };
     }
     cursor: pointer;
 
     &:hover{
-        background-color: ${ props => props.active  ? '#01164d' : 'rgba(217, 217, 217, .8)' };
+        background-color: ${ props => props.$active  ? '#01164d' : 'rgba(217, 217, 217, .8)' };
     }
 `;
-export const Logout = styled.a`
+export const Logout = styled.div`
     position: absolute;
     bottom: 0;
     width: 50px;

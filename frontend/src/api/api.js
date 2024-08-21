@@ -10,6 +10,7 @@ export const login = async (username, password) => {
             username: username,
             password: password
         });
+        localStorage.setItem('user_token', response.data.token)
         return response.data; // Retorna os dados da resposta
     } catch (error) {
         throw error; // Lança o erro para tratamento no componente
@@ -35,9 +36,9 @@ export const getUser = async () => {
     try {
         const response = await axios.get(`${API_BASE_URL}/api/user/auth/`, {
             withCredentials: true,
-            headers: {
-                'Authorization': `Token ${localStorage.getItem('authToken')}` 
-            }
+            // headers: {
+            //     'Authorization': `Token ${localStorage.getItem('authToken')}` 
+            // }
         });
         return response.data;
     } catch (error) {
@@ -50,9 +51,9 @@ export const getUser = async () => {
 export const updateUser = async (userData) => {
     try {
         const response = await axios.put(`${API_BASE_URL}/api/update-user/`, userData, {
-            headers: {
-                'Authorization': `Token ${localStorage.getItem('token')}` // Ou o método de autenticação que você estiver usando
-            }
+            // headers: {
+            //     'Authorization': `Token ${localStorage.getItem('user_token')}`,
+            // }
         });
         return response.data; // Retorna os dados atualizados
     } catch (error) {
@@ -64,12 +65,33 @@ export const updateUser = async (userData) => {
 export const updatePassword = async (passwordData) => {
     try {
         const response = await axios.put(`${API_BASE_URL}/api/update-password/`, passwordData, {
-            headers: {
-                'Authorization': `Token ${localStorage.getItem('token')}` // Ou o método de autenticação que você estiver usando
-            }
+            // headers: {
+            //     'Authorization': `Token ${localStorage.getItem('user_token')}`,
+            // }
         });
         return response.data; // Retorna a confirmação da atualização
     } catch (error) {
         throw error; // Lança o erro para tratamento no componente
+    }
+};
+
+export const uploadImage = async (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+        const response = await axios.post('http://127.0.0.1:8000/perfil/profileImage/', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': `Token ${localStorage.getItem('user_token')}`,
+            },
+        });
+        console.log('Imagem enviada com sucesso! ' + response.data);
+    } catch (error) {
+        console.log('Erro ao enviar a imagem.');
+        console.error('Erro ao enviar a imagem:', error);
+        if (error.response) {
+            console.error('Dados do erro:', error.response.data);
+        }
     }
 };

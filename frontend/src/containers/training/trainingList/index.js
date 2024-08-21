@@ -33,10 +33,10 @@ const TrainingList = () => {
           </NavbarTrainingItem>
           <Underline move={underlineMove} size={underlineSize} scenario="default"></Underline> 
         </ul>
-      </NavbarTraining>
-      <ListTraining>
-        <TrainingListItem bgColor={'#72C8F3'} active />
-        <TrainingListItem bgColor={'#FFBA08'} />
+      </NavbarTraining> 
+      <ListTraining> 
+        <TrainingListItem bgColor={'#72C8F3'} active="true" />
+        <TrainingListItem bgColor={'#FFBA08'} active="true" />
         <TrainingListItem bgColor={'#32589B'} />
         <TrainingListItem bgColor={'#72C8F3'} />
         <TrainingListItem bgColor={'#FFBA08'} />
