@@ -7,15 +7,17 @@ import os
 from rest_framework.decorators import api_view
 from django.conf import settings
 from rest_framework import viewsets
+from django.contrib.auth.models import User
+from rest_framework.permissions import IsAuthenticated
 
 
 class ProfileImageViewSet(viewsets.ModelViewSet):
     queryset = ProfileImage.objects.all()
     serializer_class = ProfileImageSerializer
+    permission_classes = [IsAuthenticated]
 
     def create(self, request, *args, **kwargs):
-        print("----------------------- i'm here -----------------------")
-        serializer = self.get_serializer(data=data)
+        serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
         file = request.data['file']
@@ -26,11 +28,21 @@ class ProfileImageViewSet(viewsets.ModelViewSet):
             for chunk in file.chunks():
                 media.write(chunk)
 
-        profile_image = ProfileImage(file_path=file_path, user=request.user)
-        profile_image.save()
+        try:
+            user = request.user
+        except:
+            raise Exception("Usuário não encontrado!")
+        
+        try:
+            image = ProfileImage.objects.get(user=user)
+        except:
+            image = None
 
-        serializer = self.get_serializer(profile_image)
+        if image:
+            image.profile_image = file_path
+        else:
+            image = ProfileImage.objects.create(profile_image=file_path, user=user)
+        image.save()
+        serializer = self.get_serializer(image)
 
-        print("----------------------- Succefully -----------------------")    
         return Response({"message": "Imagem salva com sucesso!"}, status=status.HTTP_201_CREATED)
-        print("----------------------- Client error -----------------------")

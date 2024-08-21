@@ -10,6 +10,7 @@ export const login = async (username, password) => {
             username: username,
             password: password
         });
+        localStorage.setItem('user_token', response.data.token)
         return response.data; // Retorna os dados da resposta
     } catch (error) {
         throw error; // Lança o erro para tratamento no componente
@@ -71,5 +72,29 @@ export const updatePassword = async (passwordData) => {
         return response.data; // Retorna a confirmação da atualização
     } catch (error) {
         throw error; // Lança o erro para tratamento no componente
+    }
+};
+
+export const uploadImage = async (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const user_token = localStorage.getItem('user_token');
+    console.log(user_token)
+
+    try {
+        const response = await axios.post('http://127.0.0.1:8000/perfil/profileImage/', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': `Token ${user_token}`,
+            },
+        });
+        console.log('Imagem enviada com sucesso! ' + response.data);
+    } catch (error) {
+        console.log('Erro ao enviar a imagem.');
+        console.error('Erro ao enviar a imagem:', error);
+        if (error.response) {
+            console.error('Dados do erro:', error.response.data);
+        }
     }
 };
