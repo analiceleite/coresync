@@ -5,6 +5,7 @@
     align-items: center;
     justify-content: center;
     margin: 10px;
+    gap: 5px;
 }
 
 .blue-dots, .light-blue-dots, .yellow-dots {
@@ -13,6 +14,8 @@
 }
 
 .blue-dots {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
     background-color: #32589B;
 }
 
@@ -21,6 +24,8 @@
 }
 
 .yellow-dots {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
     background-color: #FFBA08;
 }
 
