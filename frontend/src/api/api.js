@@ -126,3 +126,39 @@ export const getTrainings = async () => {
         throw error;
     }
 };
+
+//
+export const getTrainingStatus = async () => {
+    try {
+        const response = await axios.get(`${API_BASE_URL}/training/training_status/`, {
+            headers: {
+                'Authorization': `Token ${localStorage.getItem('user_token')}`,
+            },
+        });
+        console.log(response.data)     
+        return response.data
+    } catch (error) {
+        throw error;
+    }
+};
+
+//
+export const updateStatusTraining = async (id, newStatus) => {
+    try {
+        console.log(`ID: ${id}`)
+        const response = await axios.put(`${API_BASE_URL}/training/training_status/${id}/`, 
+        {
+            status: newStatus // Enviar o novo status no corpo da requisição
+        },
+        {
+            headers: {
+                'Authorization': `Token ${localStorage.getItem('user_token')}`,
+                'Content-Type': 'application/json',
+            },
+        });
+        console.log(response.data)     
+        return response.data
+    } catch (error) {
+        throw error;
+    }
+};

@@ -23,9 +23,7 @@ class TrainingStatus(models.Model):
     status = models.CharField(
         max_length=20,
         choices=STATUS_CHOICES,
-        default='draft',
+        default='pending',
     )
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    
-    def __str__(self):
-        return self.title
+    training = models.ForeignKey(Training, on_delete=models.CASCADE)

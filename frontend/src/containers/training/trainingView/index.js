@@ -11,6 +11,13 @@ const TrainingView = () => {
 
   useEffect(() => {
     setTraining(selectedTraining);
+    console.log("AAAAAAAAAAAAAAAAAAA")
+    console.log(training)
+    if(training){
+      console.log(training.status)
+    }
+    console.log("AAAAAAAAAAAAAAAAAAA")
+    
   }, [selectedTraining]);
 
   return (
@@ -21,7 +28,7 @@ const TrainingView = () => {
           <p>{training && training.description}</p>
         </div>
         <div>
-          <Status/>
+          <Status id={training && training.id} status={training && training.status} />
         </div>
       </S.Header>
       <S.Content>

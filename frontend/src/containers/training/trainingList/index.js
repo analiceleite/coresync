@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { NavbarTraining, Underline, NavbarTrainingItem, ListTraining } from './styles';
 import TrainingListItem from '../../../components/training/trainingListItem';
-import { getTrainings } from '../../../api/api';
+import { getTrainings, getTrainingStatus } from '../../../api/api';
 import { TrainingContext } from '../../../contexts/viewTrainingContext';
 
 const TrainingList = () => {
@@ -13,14 +13,18 @@ const TrainingList = () => {
   useEffect(() => {
     const fetchTrainingList = async () => {
       try {
-        const trainingList = await getTrainings();
+        // const trainingList = await getTrainings();
+        const trainingList = await getTrainingStatus();
+        console.log(trainingList)
         setTrainingList(trainingList);
-
+        console.log(trainingList[0]["training"].title)
         if (!selectedTraining && trainingList.length > 0) {
           const training = {
-            'title': trainingList[0].title, 
-            'description': trainingList[0].description, 
-            'content': trainingList[0].content,
+            'title': trainingList[0]["training"].title, 
+            'description': trainingList[0]["training"].description, 
+            'content': trainingList[0]["training"].content,
+            'status':trainingList[0].status,
+            'id':trainingList[0].id
           };
           setSelectedTraining(training);
         }
@@ -63,14 +67,16 @@ const TrainingList = () => {
                 key={index} 
                 bgColor={'#72C8F3'} 
                 active="true" 
-                title={value.title}
-                description={value.description}
-                content={value.content}
+                title={value["training"].title}
+                description={value["training"].description}
+                content={value["training"].content}
                 onClick={() => {
                   setSelectedTraining({
-                    'title': value.title, 
-                    'description': value.description, 
-                    'content': value.content,
+                    'title': value["training"].title, 
+                    'description': value["training"].description, 
+                    'content': value["training"].content,
+                    'status':trainingList[0].status,
+                    'id':trainingList[0].id
                   });
                 }}
               />

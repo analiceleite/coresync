@@ -47,15 +47,6 @@ class ProfileImageViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(image)
 
         return Response({"message": "Imagem salva com sucesso!"}, status=status.HTTP_201_CREATED)
-    
-
-    # def perform_create(self, serializer):
-    #     # Chama o método save do serializer, que realiza o salvamento padrão
-    #     instance = serializer.save()
-
-    #     # Aqui você pode adicionar a funcionalidade adicional que deseja
-    #     self.additional_functionality(instance)
-
 
     def list (self, request, *args, **kwargs):
         try:

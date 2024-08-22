@@ -14,6 +14,14 @@ class TrainingViewSet(viewsets.ModelViewSet):
     serializer_class = TrainingSerializer
     permission_classes = [IsAuthenticated]
 
+    def perform_create(self, serializer):
+        instance = serializer.save()
+        users = User.objects.all()
+
+        for user in users:
+            TrainingStatus.objects.create(training=instance, user=user)
+        
+
 class TrainingStatusViewSet(viewsets.ModelViewSet):
     queryset = TrainingStatus.objects.all()
     serializer_class = TrainingStatusSerializer
