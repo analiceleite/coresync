@@ -6,3 +6,5 @@ from .serializers import ReuniaoSerializer
 class ReuniaoViewSet(viewsets.ModelViewSet): #CRUD
     queryset = Reuniao.objects.all()
     serializer_class = ReuniaoSerializer
+
+    

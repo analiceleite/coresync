@@ -12,6 +12,7 @@ export const Container = styled.div`
         border: 1px solid rgba(51,51,51,.5);
         background-color: #F3F3F3;
     }
+    overflow: hidden;
 `;
 export const ColorContainer = styled.div`
     background-color: ${props => props.color};

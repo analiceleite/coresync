@@ -1,16 +1,30 @@
-import React from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import * as S from './styles';
 import './video.css';
 import Status from '../../../components/training/trainingStatus';
 import PolkaDots from '../../../components/global/dots';
+import { TrainingContext } from '../../../contexts/viewTrainingContext';
 
-const TrainingView = ({selectedTraining}) => {
+const TrainingView = () => {
+  const { training, setTraining } = useState();
+  const { selectedTraining } = useContext(TrainingContext);
+
+  useEffect(() => {
+    console.log("AAAAAAAAAAAAA")
+    console.log(localStorage.getItem("selectedTraining"))
+    console.log("AAAAAAAAAAAAA")
+    if(localStorage.getItem("selectedTraining") && localStorage.getItem('selectedTraining') !== "undefined"){   
+      const selectedTrainingJson = JSON.parse(localStorage.getItem("selectedTraining"));
+      setTraining(selectedTrainingJson);
+    }
+  }, [selectedTraining, setTraining])
+
   return (
     <S.Container>
       <S.Header>
         <div>
-          <h2>{selectedTraining && selectedTraining.title}</h2>
-          <p>{selectedTraining && selectedTraining.description}</p>
+          <h2>{training && training.title}</h2>
+          <p>{training && training.description}</p>
         </div>
         <div>
         <Status/>
@@ -18,8 +32,8 @@ const TrainingView = ({selectedTraining}) => {
       </S.Header>
       <S.Content>
         {
-          selectedTraining &&
-          <div dangerouslySetInnerHTML={{ __html: selectedTraining.content }} />
+          training &&
+          <div dangerouslySetInnerHTML={{ __html: training.content }} />
         }
       </S.Content>
       <S.PolkaDotsContainer>
