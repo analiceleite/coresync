@@ -2,13 +2,13 @@ import React from 'react';
 import * as S from './styles.js';
 import { IoCheckmark } from 'react-icons/io5';
 
-const TrainingListItem = ({bgColor, active}) => {
+const TrainingListItem = ({bgColor, active, title, description, content, onClick}) => {
   return (
-    <S.Container>
+    <S.Container onClick={() => {onClick()}}>
         <S.ColorContainer color={bgColor} />
         <S.TrainingContent>
-            <h3>UI/UX</h3>
-            <p>Esse treinamento envolve a área de design e experiência de usuário.</p>
+            <h3>{title}</h3>
+            <p>{description}</p>
         </S.TrainingContent>
         { active && 
           <S.Check>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Title from '../../components/global/title';
 import BaseContainer from '../../containers/global/baseContainer';
 import TrainingList from '../../containers/training/trainingList';
@@ -6,6 +6,8 @@ import { TitleContainer, Container, TrainingListContainer } from './styles.js';
 import TrainingView from '../../containers/training/trainingView/index.js';
 
 const Training = () => {
+  const [selectedTraining, setSelectedTraining] = useState();
+
   return (
     <BaseContainer>
       <div>
@@ -14,11 +16,11 @@ const Training = () => {
           <Title text="treinamentos!" color="dark-blue"/>
         </TitleContainer>
         <TrainingListContainer>
-          <TrainingList/>
+          <TrainingList selectTraining={(training)=>{setSelectedTraining(training)}} />
         </TrainingListContainer>
       </div>
       <div>
-        <TrainingView/>  
+        <TrainingView selectedTraining={selectedTraining} />  
       </div>
     </BaseContainer>
   );

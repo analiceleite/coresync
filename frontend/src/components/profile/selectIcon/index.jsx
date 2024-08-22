@@ -7,13 +7,11 @@ import { uploadImage } from '../../../api/api.js';
 
 
 
-const SelectIcon = () => {
-    const [imageFile, setImageFile] = useState(null);
-
-    const handleFileChange = (event) => {
+const SelectIcon = ({handleImageFile}) => {
+    const handleFileChange = async (event) => {
         const file = event.target.files[0];
-        setImageFile(file);
-        uploadImage(file);
+        await uploadImage(file);
+        handleImageFile(file);
     };
 
     return(

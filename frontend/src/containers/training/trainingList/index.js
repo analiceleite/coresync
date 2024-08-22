@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   NavbarTraining,
   Underline,
@@ -6,10 +6,25 @@ import {
   ListTraining,
 } from './styles';
 import TrainingListItem from '../../../components/training/trainingListItem';
+import { getTrainings } from '../../../api/api';
 
-const TrainingList = () => {
+const TrainingList = ({selectTraining}) => {
   const [underlineMove, setUnderlineMove] = useState("translateX(calc(100% / 4 * 0))");
   const [underlineSize, setUnderlineSize] = useState("48px");
+  const [trainingList, setTrainingList] = useState();
+
+  const fetchTrainingList = async () => {
+    try {
+        const trainingList = await getTrainings();
+        setTrainingList(trainingList);
+    } catch (error) {
+        console.error('Erro ao obter os treinamentos:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTrainingList();
+  }, [])
 
   return (
     <>
@@ -35,12 +50,25 @@ const TrainingList = () => {
         </ul>
       </NavbarTraining> 
       <ListTraining> 
-        <TrainingListItem bgColor={'#72C8F3'} active="true" />
-        <TrainingListItem bgColor={'#FFBA08'} active="true" />
-        <TrainingListItem bgColor={'#32589B'} />
-        <TrainingListItem bgColor={'#72C8F3'} />
-        <TrainingListItem bgColor={'#FFBA08'} />
-        <TrainingListItem bgColor={'#FFBA08'} />
+        { 
+          trainingList &&
+            trainingList.map((value, index) => (
+              <TrainingListItem 
+                key={index} 
+                bgColor={'#72C8F3'} 
+                active="true" 
+                title={value.title}
+                description={value.description}
+                content={value.content}
+                onClick={() => {
+                  selectTraining({
+                    'title': value.title, 
+                    'description':value.description, 
+                    'content':value.content}
+                  )}}
+              />
+            ))
+        }
       </ListTraining>
     </>
   );

@@ -12,6 +12,7 @@ import {
 
 const IconProfile = () => {
   const [userName, setUserName] = useState('');
+  const [ imageFile, setImageFile ] = useState();
 
   useEffect(() => {
     const fetchUserName = async () => {
@@ -32,8 +33,8 @@ const IconProfile = () => {
         <Title text="Configure sua" />
         <Title text="conta!" color="dark-blue" />
       </ContainerTitle>
-      <IconProfileItem />
-      <SelectIcon />
+      <IconProfileItem imageChange={imageFile} />
+      <SelectIcon handleImageFile={(file) => {setImageFile(file)}} />
       <ContainerNameUser>
         <SubTitle text={userName} />
       </ContainerNameUser>

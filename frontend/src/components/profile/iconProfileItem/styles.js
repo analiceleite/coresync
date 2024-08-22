@@ -10,5 +10,12 @@ export const IconContainer = styled.div`
     align-items: center;
     justify-content: center;
     font-size: 95px;
+    overflow: hidden;
     color: #353548;
+
+    img{
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    }
 `;

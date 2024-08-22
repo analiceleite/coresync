@@ -80,7 +80,7 @@ export const uploadImage = async (file) => {
     formData.append('file', file);
 
     try {
-        const response = await axios.post('http://127.0.0.1:8000/perfil/profileImage/', formData, {
+        const response = await axios.post(`${API_BASE_URL}/perfil/profileImage/`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
                 'Authorization': `Token ${localStorage.getItem('user_token')}`,
@@ -105,11 +105,23 @@ export const getProfileImage = async () => {
             },
             responseType: 'blob',
         });
-        console.log("Sucesso!")
-        console.log(response.data)
         const url = URL.createObjectURL(new Blob([response.data]));
-        console.log(url)
         return url
+    } catch (error) {
+        throw error; // Lança o erro para tratamento no componente
+    }
+};
+
+//Função para requisitar os treinamentos
+export const getTrainings = async () => {
+    try {
+        const response = await axios.get(`${API_BASE_URL}/training/training/`, {
+            headers: {
+                'Authorization': `Token ${localStorage.getItem('user_token')}`,
+            },
+        });
+        console.log(response.data)     
+        return response.data
     } catch (error) {
         throw error; // Lança o erro para tratamento no componente
     }

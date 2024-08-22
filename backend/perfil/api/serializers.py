@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ProfileImage
+from ..models import ProfileImage
 
 class ProfileImageSerializer(serializers.Serializer):
     file = serializers.ImageField()

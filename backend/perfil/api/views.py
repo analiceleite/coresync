@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import ProfileImageSerializer
-from .models import ProfileImage
+from ..models import ProfileImage
 import os
 from rest_framework.decorators import api_view
 from django.conf import settings
@@ -48,14 +48,15 @@ class ProfileImageViewSet(viewsets.ModelViewSet):
 
         return Response({"message": "Imagem salva com sucesso!"}, status=status.HTTP_201_CREATED)
     
+
     def list (self, request, *args, **kwargs):
         try:
             image = ProfileImage.objects.get(user=request.user)
         except:
             return Response({"message":"Imagem não encontrada!"}, status=status.HTTP_400_BAD_REQUEST)
 
-        image_path = image.profile_image 
-        print(image_path)
+        image_path = image.profile_image
+        
         if os.path.exists(image_path):
             return FileResponse(open(image_path, 'rb'), content_type='image/png')
         else:

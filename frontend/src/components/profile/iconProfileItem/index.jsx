@@ -6,15 +6,29 @@ import {
 import { IoPersonOutline } from "react-icons/io5";
 import { getProfileImage } from '../../../api/api.js';
 
-const IconProfileItem = () => {
+const IconProfileItem = ({imageChange}) => {
     const [urlImage, setUrlImage] = useState() 
+    const fetchImage = async () => {
+        try {
+            const imageUrl = await getProfileImage();
+            setUrlImage(imageUrl);
+        } catch (error) {
+            console.error('Erro ao obter a imagem:', error);
+        }
+    };
+    
     useEffect(() => {
-        setUrlImage(getProfileImage());
-    }, [])
+        fetchImage();
+    }, [imageChange])
+
     return (
             <IconContainer>
-                <IoPersonOutline/>
-                <img src={urlImage} alt="IMAGEM" />
+                {urlImage && 
+                    <img 
+                        src={urlImage} 
+                        alt="IMAGEM"
+                    />
+                }
             </IconContainer>
     );
 };
