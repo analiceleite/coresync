@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-// Defina a URL base da API
-const API_BASE_URL = 'http://localhost:8000'; // URL base
+const API_BASE_URL = 'http://localhost:8000'; 
 
 // Função para login
 export const login = async (username, password) => {
@@ -17,7 +16,7 @@ export const login = async (username, password) => {
     }
 };
 
-// Função para registro
+// Função para registro de usuário
 export const register = async (username, password, email) => {
     try {
         const response = await axios.post(`${API_BASE_URL}/api/register/`, {
