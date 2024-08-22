@@ -1,10 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import {
-  NavbarTraining,
-  Underline,
-  NavbarTrainingItem,
-  ListTraining,
-} from './styles';
+import { NavbarTraining, Underline, NavbarTrainingItem, ListTraining } from './styles';
 import TrainingListItem from '../../../components/training/trainingListItem';
 import { getTrainings } from '../../../api/api';
 import { TrainingContext } from '../../../contexts/viewTrainingContext';
@@ -12,40 +7,30 @@ import { TrainingContext } from '../../../contexts/viewTrainingContext';
 const TrainingList = () => {
   const [underlineMove, setUnderlineMove] = useState("translateX(calc(100% / 4 * 0))");
   const [underlineSize, setUnderlineSize] = useState("48px");
-  const [trainingList, setTrainingList] = useState();
-  const { selectedTraining, setSelectedTraining  } = useContext(TrainingContext);
+  const [trainingList, setTrainingList] = useState([]);
+  const { selectedTraining, setSelectedTraining } = useContext(TrainingContext);
 
   useEffect(() => {
-    console.log("BBBBBBBBBBBBBBBBBB")
-    console.log(localStorage.getItem('selectedTraining'))
-    console.log("BBBBBBBBBBBBBBBBBB")
-    
-    if(localStorage.getItem('selectedTraining') && localStorage.getItem('selectedTraining') !== 'undefined'){
-      localStorage.setItem('selectedTraining', JSON.stringify(selectedTraining)); 
-    }else{ 
-      if(trainingList && trainingList !== "undefined"){
-        const training = {
-          'title': trainingList[0].title, 
-          'description':trainingList[0].description, 
-          'content':trainingList[0].content
-        }
-        localStorage.setItem('selectedTraining', JSON.stringify(training));
-      }
-    }
-  }, [selectedTraining, trainingList])
-
-  const fetchTrainingList = async () => {
-    try {
+    const fetchTrainingList = async () => {
+      try {
         const trainingList = await getTrainings();
         setTrainingList(trainingList);
-    } catch (error) {
-        console.error('Erro ao obter os treinamentos:', error);
-    }
-  };
 
-  useEffect(() => {
+        if (!selectedTraining && trainingList.length > 0) {
+          const training = {
+            'title': trainingList[0].title, 
+            'description': trainingList[0].description, 
+            'content': trainingList[0].content,
+          };
+          setSelectedTraining(training);
+        }
+      } catch (error) {
+        console.error('Erro ao obter os treinamentos:', error);
+      }
+    };
+
     fetchTrainingList();
-  }, [])
+  }, []);
 
   return (
     <>
@@ -84,9 +69,9 @@ const TrainingList = () => {
                 onClick={() => {
                   setSelectedTraining({
                     'title': value.title, 
-                    'description':value.description, 
-                    'content':value.content}
-                  )
+                    'description': value.description, 
+                    'content': value.content,
+                  });
                 }}
               />
             ))

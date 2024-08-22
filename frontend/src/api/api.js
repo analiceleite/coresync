@@ -108,7 +108,7 @@ export const getProfileImage = async () => {
         const url = URL.createObjectURL(new Blob([response.data]));
         return url
     } catch (error) {
-        throw error; // Lança o erro para tratamento no componente
+        throw error;
     }
 };
 
@@ -123,6 +123,6 @@ export const getTrainings = async () => {
         console.log(response.data)     
         return response.data
     } catch (error) {
-        throw error; // Lança o erro para tratamento no componente
+        throw error;
     }
 };

@@ -1,9 +1,22 @@
-import { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
-const TrainingContext = createContext();
+export const TrainingContext = createContext();
 
-const TrainingProvider = ({ children }) => {
-  const [selectedTraining, setSelectedTraining] = useState();
+export const TrainingProvider = ({ children }) => {
+  const [selectedTraining, setSelectedTraining] = useState(null);
+
+  useEffect(() => {
+    const storedTraining = localStorage.getItem('selectedTraining');
+    if (storedTraining && storedTraining !== 'undefined') {
+      setSelectedTraining(JSON.parse(storedTraining));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (selectedTraining) {
+      localStorage.setItem('selectedTraining', JSON.stringify(selectedTraining));
+    }
+  }, [selectedTraining]);
 
   return (
     <TrainingContext.Provider value={{ selectedTraining, setSelectedTraining }}>
@@ -11,5 +24,3 @@ const TrainingProvider = ({ children }) => {
     </TrainingContext.Provider>
   );
 };
-
-export { TrainingProvider, TrainingContext };
