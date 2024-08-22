@@ -64,7 +64,7 @@ const Popup = ({ isOpen, onClose, title, message, type }) => {
                 {title && <PopupTitle>{title}</PopupTitle>}
                 <PopupMessage>{message}</PopupMessage>
                 {type === 'error' && <PopupError>Por favor, tente novamente.</PopupError>}
-                {type === 'success' && <PopupSuccess>Cadastro realizado com sucesso!</PopupSuccess>}
+                {type === 'success' && <PopupSuccess>Operação realizada com sucesso!</PopupSuccess>}
             </PopupContent>
         </PopupOverlay>,
         document.body
