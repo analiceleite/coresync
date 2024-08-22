@@ -46,7 +46,7 @@ export const Input = styled.input`
   border: 1px solid #ccc;
   border-left: 3px solid #FFBA08;
   outline: none;
-  cursor: default;
+  cursor: pointer;
 `;
 
 export const Icon = styled.div`

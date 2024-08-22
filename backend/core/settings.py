@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # Django Vanila
+    # Django Vanilla
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # Apps
     'authentication',
     'core',
+    'meet',
     'perfil',
     'training',
 ]

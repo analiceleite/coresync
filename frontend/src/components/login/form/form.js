@@ -22,11 +22,12 @@ const Form = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [fullName, setFullName] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     //* Popup settings
     const [popupOpen, setPopupOpen] = useState(false);
     const [popupMessage, setPopupMessage] = useState('');
-    const [popupType, setPopupType] = useState(''); // 'success' or 'error'
+    const [popupType, setPopupType] = useState(''); 
 
     //* Navigate and scroll
     const navigate = useNavigate();
@@ -41,6 +42,8 @@ const Form = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
+
         try {
             if (itemActive === 0) {
                 //* Handle login
@@ -57,12 +60,12 @@ const Form = () => {
                     setPopupMessage('As senhas não conferem');
                     setPopupType('error');
                     setPopupOpen(true);
+                    setIsLoading(false);
                     return;
                 }
                 const data = await register(email, password, fullName);
                 console.log('Cadastro realizado com sucesso:', data);
                 //* Handle successful registration
-                setPopupMessage('Cadastro realizado com sucesso! Por favor, faça o login.');
                 setPopupType('success');
                 setPopupOpen(true);
 
@@ -73,13 +76,18 @@ const Form = () => {
                 setFullName('');
 
                 //* Go back to login
+                setUnderlineMove("translateX(calc(100% / 4 * 0))");
+                setUnderlineSize("46px"); 
                 setItemActive(0);
+                
             }
         } catch (error) {
             console.error('Error:', error.response?.data || error.message);
             setPopupMessage('Um erro ocorreu: ' + (error.response?.data?.error || error.message));
             setPopupType('error');
             setPopupOpen(true);
+        } finally {
+            setIsLoading(false); 
         }
     };
 
@@ -165,8 +173,8 @@ const Form = () => {
                     </>
                 )}
 
-                <S.Button type="submit">
-                    {itemActive === 0 ? "Entrar" : "Cadastrar"}
+                <S.Button type="submit" disabled={isLoading}>
+                    {isLoading? (itemActive === 0 ? "Entrando..." : "Carregando...") : (itemActive === 0 ? "Entrar" : "Cadastrar")}
                 </S.Button>
             </S.Form>
 
@@ -174,7 +182,7 @@ const Form = () => {
             <Popup
                 isOpen={popupOpen}
                 onClose={() => setPopupOpen(false)}
-                title={popupType === 'error' ? 'Error' : 'Success'}
+                title={popupType === 'error' ? 'Erro!' : 'Sucesso!'}
                 message={popupMessage}
                 type={popupType}
             />

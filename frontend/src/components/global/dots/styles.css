@@ -10,8 +10,6 @@
 .blue-dots, .light-blue-dots, .yellow-dots {
     width: 20px;
     height: 20px;
-    border-radius: 50%; 
-    margin: 0 15px;
 }
 
 .blue-dots {
@@ -32,7 +30,6 @@
 }
 
 .dots--small {
-    width: 15px;
+    width: 25px;
     height: 15px;
-    margin: 0 0 0 15px;
 }
