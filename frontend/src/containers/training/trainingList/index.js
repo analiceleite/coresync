@@ -15,17 +15,17 @@ const TrainingList = () => {
       try {
         // const trainingList = await getTrainings();
         const trainingList = await getTrainingStatus();
-        console.log(trainingList)
+      
         setTrainingList(trainingList);
-        console.log(trainingList[0]["training"].title)
         if (!selectedTraining && trainingList.length > 0) {
-          const training = {
-            'title': trainingList[0]["training"].title, 
-            'description': trainingList[0]["training"].description, 
-            'content': trainingList[0]["training"].content,
-            'status':trainingList[0].status,
-            'id':trainingList[0].id
-          };
+          const training = trainingList[0]
+          // const training = {
+          //   'title': trainingList[0]["training"].title, 
+          //   'description': trainingList[0]["training"].description, 
+          //   'content': trainingList[0]["training"].content,
+          //   'status':trainingList[0].status,
+          //   'id':trainingList[0].id
+          // };
           setSelectedTraining(training);
         }
       } catch (error) {
@@ -71,13 +71,7 @@ const TrainingList = () => {
                 description={value["training"].description}
                 content={value["training"].content}
                 onClick={() => {
-                  setSelectedTraining({
-                    'title': value["training"].title, 
-                    'description': value["training"].description, 
-                    'content': value["training"].content,
-                    'status':trainingList[0].status,
-                    'id':trainingList[0].id
-                  });
+                  setSelectedTraining(value);
                 }}
               />
             ))
