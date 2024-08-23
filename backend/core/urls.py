@@ -6,5 +6,5 @@ urlpatterns = [
     path("perfil/", include("perfil.api.urls")),
     path("training/", include("training.api.urls")),
     path('api/', include('authentication.api.urls')),
-    path('api/', include('meet.urls'))
+    path('api/meet/', include('meet.urls'))
 ]

@@ -8,7 +8,7 @@ export const Background = styled.div`
     justify-content: center;
 `;
 
-export const ContainerForm = styled.div`
+export const ContainerForm = styled.form`
     width: 100%;
     border-radius: 20px;
     box-shadow: 1px 1px 8px rgba(0,0,0,.25);
