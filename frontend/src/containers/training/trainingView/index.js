@@ -11,28 +11,21 @@ const TrainingView = () => {
 
   useEffect(() => {
     setTraining(selectedTraining);
-    console.log("AAAAAAAAAAAAAAAAAAA")
-    console.log(training)
-    if(training){
-      console.log(training.status)
-    }
-    console.log("AAAAAAAAAAAAAAAAAAA")
-    
   }, [selectedTraining]);
 
   return (
     <S.Container>
       <S.Header>
         <div>
-          <h2>{training && training.title}</h2>
-          <p>{training && training.description}</p>
+          <h2>{training && training['training'].title}</h2>
+          <p>{training && training['training'].description}</p>
         </div>
         <div>
-          <Status id={training && training.id} status={training && training.status} />
+          <Status training={training} />
         </div>
       </S.Header>
       <S.Content>
-        {training && <div dangerouslySetInnerHTML={{ __html: training.content }} />}
+        {training && <div dangerouslySetInnerHTML={{ __html: training['training'].content }} />}
       </S.Content>
       <S.PolkaDotsContainer>
         <PolkaDots isSmall />  

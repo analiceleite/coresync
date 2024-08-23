@@ -85,10 +85,8 @@ export const uploadImage = async (file) => {
                 'Authorization': `Token ${localStorage.getItem('user_token')}`,
             },
         });
-        console.log('Imagem enviada com sucesso! ' + response.data);
+        return response.data
     } catch (error) {
-        console.log('Erro ao enviar a imagem.');
-        console.error('Erro ao enviar a imagem:', error);
         if (error.response) {
             console.error('Dados do erro:', error.response.data);
         }
@@ -112,21 +110,20 @@ export const getProfileImage = async () => {
 };
 
 //Função para requisitar os treinamentos
-export const getTrainings = async () => {
-    try {
-        const response = await axios.get(`${API_BASE_URL}/training/training/`, {
-            headers: {
-                'Authorization': `Token ${localStorage.getItem('user_token')}`,
-            },
-        });
-        console.log(response.data)     
-        return response.data
-    } catch (error) {
-        throw error;
-    }
-};
+// export const getTrainings = async () => {
+//     try {
+//         const response = await axios.get(`${API_BASE_URL}/training/training/`, {
+//             headers: {
+//                 'Authorization': `Token ${localStorage.getItem('user_token')}`,
+//             },
+//         });   
+//         return response.data
+//     } catch (error) {
+//         throw error;
+//     }
+// };
 
-//
+//Função para requisitar os treinamnetos com o status
 export const getTrainingStatus = async () => {
     try {
         const response = await axios.get(`${API_BASE_URL}/training/training_status/`, {
@@ -134,20 +131,22 @@ export const getTrainingStatus = async () => {
                 'Authorization': `Token ${localStorage.getItem('user_token')}`,
             },
         });
-        console.log(response.data)     
         return response.data
     } catch (error) {
         throw error;
     }
 };
 
-//
-export const updateStatusTraining = async (id, newStatus) => {
+//Função para fazer o update do status
+export const updateStatusTraining = async (training, newStatus) => {
     try {
-        console.log(`ID: ${id}`)
-        const response = await axios.put(`${API_BASE_URL}/training/training_status/${id}/`, 
+        console.log(training.id)
+        console.log(newStatus)
+        const response = await axios.put(`${API_BASE_URL}/training/training_status/${training.id}/`, 
         {
-            status: newStatus // Enviar o novo status no corpo da requisição
+            "status": newStatus,
+            "user_id": training.user.id,
+            "training_id": training.training.id
         },
         {
             headers: {

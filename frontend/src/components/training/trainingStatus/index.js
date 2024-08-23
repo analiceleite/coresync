@@ -3,12 +3,16 @@ import * as S from './styles';
 import { IoChevronDownOutline } from "react-icons/io5";
 import { updateStatusTraining } from '../../../api/api';
 
-const Status = ({id, status}) => {
-  console.log(`IDER: ${id}`)
+const Status = ({training}) => {
   const [activeSelectStatus, setActiveSelectStatus] = useState(false);
-  const [currentOption, setCurrentOption] = useState(status);
+  const [currentOption, setCurrentOption] = useState(training ? training.status : "pending");
   const selectRef = useRef(null);
   const optionRef = useRef(null);
+
+  useEffect(() => {
+    training && 
+    setCurrentOption(training.status)
+  }, [training])
 
   const toggleSelect = () => { 
     setActiveSelectStatus(!activeSelectStatus);
@@ -34,17 +38,17 @@ const Status = ({id, status}) => {
   
   const changeTrainingStatus = async (newStatus) => {
     try {
-      const trainingList = await updateStatusTraining(id, newStatus);
-      
+      const trainingObj = await updateStatusTraining(training, newStatus);
+      setCurrentOption(trainingObj.status)
     } catch (error) {
-      console.error('Erro ao obter os treinamentos:', error);
+      console.error('Error to update status:', error);
     }
   };
 
   return (
     <S.Container>
       <S.StatusSelector>
-          <div>{ status }</div>
+          <div>{ currentOption }</div>
           <div ref={optionRef} onClick={toggleSelect} >
               <span>Update</span>
               <IoChevronDownOutline/>
