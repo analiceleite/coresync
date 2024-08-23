@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from .serializers import UserSerializer
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import AllowAny
+from perfil.models import ProfileImage
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -40,6 +41,7 @@ def register_user(request):
         return Response({'error': 'Usuário já cadastrado'}, status=status.HTTP_400_BAD_REQUEST)
     
     user = User.objects.create_user(username=username, password=password, email=email)
+    ProfileImage.objects.create(user=user)
     serializer = UserSerializer(user)
     
     return Response(serializer.data, status=status.HTTP_201_CREATED)

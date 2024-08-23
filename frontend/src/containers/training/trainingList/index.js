@@ -5,35 +5,27 @@ import { getTrainings, getTrainingStatus } from '../../../api/api';
 import { TrainingContext } from '../../../contexts/viewTrainingContext';
 
 const TrainingList = () => {
-  const [underlineMove, setUnderlineMove] = useState("translateX(calc(100% / 4 * 0))");
-  const [underlineSize, setUnderlineSize] = useState("48px");
+  const [underlineMove, setUnderlineMove] = useState("translateX(calc(100% / 4 * 0.1))");
+  const [underlineSize, setUnderlineSize] = useState("46px");
   const [trainingList, setTrainingList] = useState([]);
   const { selectedTraining, setSelectedTraining } = useContext(TrainingContext);
 
-  useEffect(() => {
-    const fetchTrainingList = async () => {
-      try {
-        // const trainingList = await getTrainings();
-        const trainingList = await getTrainingStatus();
-      
-        setTrainingList(trainingList);
-        if (!selectedTraining && trainingList.length > 0) {
-          const training = trainingList[0]
-          // const training = {
-          //   'title': trainingList[0]["training"].title, 
-          //   'description': trainingList[0]["training"].description, 
-          //   'content': trainingList[0]["training"].content,
-          //   'status':trainingList[0].status,
-          //   'id':trainingList[0].id
-          // };
-          setSelectedTraining(training);
-        }
-      } catch (error) {
-        console.error('Erro ao obter os treinamentos:', error);
+  const fetchTrainingList = async (status) => {
+    try {
+      const trainingList = await getTrainingStatus(status);
+    
+      setTrainingList(trainingList);
+      if (!selectedTraining && trainingList.length > 0) {
+        const training = trainingList[0]
+        setSelectedTraining(training);
       }
-    };
+    } catch (error) {
+      console.error('Erro ao obter os treinamentos:', error);
+    }
+  };
 
-    fetchTrainingList();
+  useEffect(() => {
+    fetchTrainingList("");
   }, []);
 
   return (
@@ -42,16 +34,36 @@ const TrainingList = () => {
         <ul>
           <NavbarTrainingItem 
             onClick={() => {
-              setUnderlineMove("translateX(calc(100% / 4 * 0))");
-              setUnderlineSize("48px");
+              setUnderlineMove("translateX(calc(100% / 4 * 0.1))");
+              setUnderlineSize("46px");
+              fetchTrainingList("");
             }}
           >
-            Ativos
+            Todos
           </NavbarTrainingItem>
           <NavbarTrainingItem 
             onClick={() => {
-              setUnderlineMove("translateX(calc(100% / 4 * 4.4))");
+              setUnderlineMove("translateX(calc(100% / 4 * 3.3))");
+              setUnderlineSize("106px");
+              fetchTrainingList("pending");
+            }}
+          >
+            Não iniciados
+          </NavbarTrainingItem>
+          <NavbarTrainingItem 
+            onClick={() => {
+              setUnderlineMove("translateX(calc(100% / 4 * 7.8))");
+              setUnderlineSize("120px");
+              fetchTrainingList("in progress");
+            }}
+          >
+            Em andamento
+          </NavbarTrainingItem>
+          <NavbarTrainingItem 
+            onClick={() => {
+              setUnderlineMove("translateX(calc(100% / 4 * 19.4))");
               setUnderlineSize("82px");
+              fetchTrainingList("complete");
             }}
           >
             Realizados
@@ -66,7 +78,7 @@ const TrainingList = () => {
               <TrainingListItem 
                 key={index} 
                 bgColor={'#72C8F3'} 
-                active="true" 
+                active={value.status === "complete" && "true"} 
                 title={value["training"].title}
                 description={value["training"].description}
                 content={value["training"].content}

@@ -1,5 +1,6 @@
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from .serializers import TrainingSerializer, TrainingStatusSerializer
 from ..models import Training, TrainingStatus
 from django.conf import settings
@@ -25,4 +26,10 @@ class TrainingViewSet(viewsets.ModelViewSet):
 class TrainingStatusViewSet(viewsets.ModelViewSet):
     queryset = TrainingStatus.objects.all()
     serializer_class = TrainingStatusSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]  
+
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    filterset_fields = ['user_id', 'status']
+
+    def get_queryset(self):
+        return TrainingStatus.objects.all()

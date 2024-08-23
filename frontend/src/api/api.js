@@ -10,9 +10,10 @@ export const login = async (username, password) => {
             password: password
         });
         localStorage.setItem('user_token', response.data.token)
-        return response.data; // Retorna os dados da resposta
+        localStorage.setItem('user', JSON.stringify(response.data))
+        return response.data;
     } catch (error) {
-        throw error; // Lança o erro para tratamento no componente
+        throw error;
     }
 };
 
@@ -109,26 +110,17 @@ export const getProfileImage = async () => {
     }
 };
 
-//Função para requisitar os treinamentos
-// export const getTrainings = async () => {
-//     try {
-//         const response = await axios.get(`${API_BASE_URL}/training/training/`, {
-//             headers: {
-//                 'Authorization': `Token ${localStorage.getItem('user_token')}`,
-//             },
-//         });   
-//         return response.data
-//     } catch (error) {
-//         throw error;
-//     }
-// };
-
 //Função para requisitar os treinamnetos com o status
-export const getTrainingStatus = async () => {
+export const getTrainingStatus = async (status) => {
+    const user = JSON.parse(localStorage.getItem('user'))
     try {
         const response = await axios.get(`${API_BASE_URL}/training/training_status/`, {
             headers: {
                 'Authorization': `Token ${localStorage.getItem('user_token')}`,
+            },
+            params: {
+                user_id: user.user.id,  // Adicione o parâmetro de filtro
+                status: status,
             },
         });
         return response.data
