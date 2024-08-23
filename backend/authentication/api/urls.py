@@ -6,7 +6,7 @@ urlpatterns = [
     path('register/', register_user, name='register_user'),
     # GET dos dados
     path('api/user/auth/', get_authenticated_user, name='get_authenticated_user'),
-    path('user/', list_users, name='list_users'),
+    path('list-users/', list_users, name='list_users'),
     path('user/<int:user_id>/', get_user, name='get_user'),
     # PUT dos dados
     path('update-user/<int:user_id>/', update_user, name='update_user'),
