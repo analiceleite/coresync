@@ -48,6 +48,7 @@ class ProfileImageViewSet(viewsets.ModelViewSet):
 
         return Response({"message": "Imagem salva com sucesso!"}, status=status.HTTP_201_CREATED)
 
+
     def list (self, request, *args, **kwargs):
         try:
             image = ProfileImage.objects.get(user=request.user)

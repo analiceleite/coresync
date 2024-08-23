@@ -10,7 +10,7 @@ export const login = async (username, password) => {
             password: password
         });
         localStorage.setItem('user_token', response.data.token)
-        localStorage.setItem('user', JSON.stringify(response.data))
+        localStorage.setItem('user', JSON.stringify(response.data.user))
         return response.data;
     } catch (error) {
         throw error;
@@ -25,9 +25,9 @@ export const register = async (username, password, email) => {
             password: password,
             email: email
         });
-        return response.data; // Retorna os dados da resposta
+        return response.data;
     } catch (error) {
-        throw error; // Lança o erro para tratamento no componente
+        throw error;
     }
 };
 
@@ -49,29 +49,31 @@ export const getUser = async () => {
 
 // Função para atualizar informações do usuário
 export const updateUser = async (userData) => {
+    const user = JSON.parse(localStorage.getItem('user'))
     try {
-        const response = await axios.put(`${API_BASE_URL}/api/update-user/`, userData, {
-            // headers: {
-            //     'Authorization': `Token ${localStorage.getItem('user_token')}`,
-            // }
+        const response = await axios.put(`${API_BASE_URL}/api/update-user/${user.id}/`, userData, {
+            headers: {
+                'Authorization': `Token ${localStorage.getItem('user_token')}`,
+            }
         });
-        return response.data; // Retorna os dados atualizados
+        localStorage.setItem('user', JSON.stringify(response.data));
+        return response.data;
     } catch (error) {
-        throw error; // Lança o erro para tratamento no componente
+        throw error;
     }
 };
 
 // Função para atualizar a senha do usuário
 export const updatePassword = async (passwordData) => {
     try {
-        const response = await axios.put(`${API_BASE_URL}/api/update-password/`, passwordData, {
-            // headers: {
-            //     'Authorization': `Token ${localStorage.getItem('user_token')}`,
-            // }
+        const response = await axios.put(`${API_BASE_URL}/api/update-password/1/`, passwordData, {
+            headers: {
+                'Authorization': `Token ${localStorage.getItem('user_token')}`,
+            }
         });
-        return response.data; // Retorna a confirmação da atualização
+        return response.data;
     } catch (error) {
-        throw error; // Lança o erro para tratamento no componente
+        throw error;
     }
 };
 //Função para upload da imagem de perfil
@@ -119,7 +121,7 @@ export const getTrainingStatus = async (status) => {
                 'Authorization': `Token ${localStorage.getItem('user_token')}`,
             },
             params: {
-                user_id: user.user.id,  // Adicione o parâmetro de filtro
+                user_id: user.id,
                 status: status,
             },
         });
@@ -132,8 +134,6 @@ export const getTrainingStatus = async (status) => {
 //Função para fazer o update do status
 export const updateStatusTraining = async (training, newStatus) => {
     try {
-        console.log(training.id)
-        console.log(newStatus)
         const response = await axios.put(`${API_BASE_URL}/training/training_status/${training.id}/`, 
         {
             "status": newStatus,
@@ -146,7 +146,6 @@ export const updateStatusTraining = async (training, newStatus) => {
                 'Content-Type': 'application/json',
             },
         });
-        console.log(response.data)     
         return response.data
     } catch (error) {
         throw error;

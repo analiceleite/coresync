@@ -14,31 +14,45 @@ const FormProfile = () => {
     const [popup, setPopup] = useState({
         visible: false,
         message: '',
-        type: '' // 'success' or 'error'
+        type: ''
     });
+    
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        const fetchUserData = async () => {
-            try {
-                const userData = await getUser();
-                setForm({
-                    name: userData.name || '',
-                    email: userData.email || '',
-                    password: '',
-                    confirmPassword: ''
-                });
-            } catch (error) {
-                setPopup({
-                    visible: true,
-                    message: 'Não foi possível carregar os dados do usuário.',
-                    type: 'error'
-                });
+        const user = JSON.parse(localStorage.getItem('user'))
+        console.log(user)
+        setForm(
+            {
+                'name': user.email,
+                'password': 'Irineu@231',
+                'confirmPassword': 'Irineu@231',
+                'email': user.username,
             }
-        };
+        )
+    }, [])
 
-        fetchUserData();
-    }, []);
+    // useEffect(() => {
+    //     const fetchUserData = async () => {
+    //         try {
+    //             const userData = await getUser();
+    //             setForm({
+    //                 name: userData.name || '',
+    //                 email: userData.email || '',
+    //                 password: '',
+    //                 confirmPassword: ''
+    //             });
+    //         } catch (error) {
+    //             setPopup({
+    //                 visible: true,
+    //                 message: 'Não foi possível carregar os dados do usuário.',
+    //                 type: 'error'
+    //             });
+    //         }
+    //     };
+
+    //     fetchUserData();
+    // }, []);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -64,15 +78,15 @@ const FormProfile = () => {
             }
 
             const updateData = {
-                name: form.name,
-                email: form.email
+                username: form.email,
+                email: form.name
             };
 
             await updateUser(updateData);
 
-            if (form.password) {
-                await updatePassword({ password: form.password });
-            }
+            // if (form.password) {
+            //     await updatePassword({ password: form.password });
+            // }
 
             setPopup({
                 visible: true,
