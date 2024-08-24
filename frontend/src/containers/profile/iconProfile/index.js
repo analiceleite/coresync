@@ -12,19 +12,11 @@ import {
 
 const IconProfile = () => {
   const [userName, setUserName] = useState('');
-  const [ imageFile, setImageFile ] = useState();
+  const [imageFile, setImageFile ] = useState();
 
   useEffect(() => {
-    const fetchUserName = async () => {
-      try {
-        const response = await API.getUser();
-        setUserName(response.data.username || ''); 
-      } catch (error) {
-        console.error('Erro ao buscar nome do usuário:', error);
-      }
-    };
-
-    fetchUserName();
+    const user = JSON.parse(localStorage.getItem('user'))
+    setUserName(user && user.email); 
   }, []);
 
   return (
@@ -38,7 +30,7 @@ const IconProfile = () => {
       <ContainerNameUser>
         <SubTitle text={userName} />
       </ContainerNameUser>
-      <PolkaDots />
+      <PolkaDots isSmall/>
     </ContainerProfile>
   );
 };

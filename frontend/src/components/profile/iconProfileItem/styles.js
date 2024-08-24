@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const IconContainer = styled.div`
-    height: 200px;
-    width: 200px;
+    height: 250px;
+    width: 250px;
     margin-top: 5vh;
     border-radius: 300px;
     background-color: #F3F3F3;
