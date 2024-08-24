@@ -17,6 +17,19 @@ export const login = async (username, password) => {
     }
 };
 
+// Função para logout
+export const logout = async () => {
+    try {
+        const response = await axios.post(`${API_BASE_URL}/api/logout/`, {}, {
+            headers: {
+                'Authorization': `Token ${localStorage.getItem('user_token')}`,
+            }
+        });
+    } catch (error) {
+        throw error;
+    }
+};
+
 // Função para registro de usuário
 export const register = async (username, password, email) => {
     try {
@@ -36,9 +49,6 @@ export const getUser = async () => {
     try {
         const response = await axios.get(`${API_BASE_URL}/api/user/auth/`, {
             withCredentials: true,
-            // headers: {
-            //     'Authorization': `Token ${localStorage.getItem('authToken')}` 
-            // }
         });
         return response.data;
     } catch (error) {
@@ -71,8 +81,10 @@ export const updatePassword = async (passwordData) => {
                 'Authorization': `Token ${localStorage.getItem('user_token')}`,
             }
         });
+        
         return response.data;
     } catch (error) {
+        console.log(error)
         throw error;
     }
 };

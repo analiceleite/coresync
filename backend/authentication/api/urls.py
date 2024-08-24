@@ -4,6 +4,7 @@ from .views import *
 urlpatterns = [
     path('login/', login_user, name='login_user'),
     path('register/', register_user, name='register_user'),
+    path('logout/', logout_user, name='logout_user'),
     # GET dos dados
     path('api/user/auth/', get_authenticated_user, name='get_authenticated_user'),
     path('list-users/', list_users, name='list_users'),

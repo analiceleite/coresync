@@ -8,6 +8,7 @@ from .serializers import UserSerializer
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import AllowAny
 from perfil.models import ProfileImage
+from rest_framework.decorators import action
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -95,19 +96,28 @@ def update_password(request, user_id):
     except User.DoesNotExist:
         return Response({'error': 'Usuário não encontrado'}, status=status.HTTP_404_NOT_FOUND)
 
-    old_password = request.data.get('old_password')
-    new_password = request.data.get('new_password')
+    new_password = request.data.get('password')
     confirm_password = request.data.get('confirm_password')
 
-    if not old_password or not new_password or not confirm_password:
-        return Response({'error': 'Senha antiga, nova senha e confirmação são obrigatórios'}, status=status.HTTP_400_BAD_REQUEST)
+    # if not old_password or not new_password or not confirm_password:
+    #     return Response({'error': 'Senha antiga, nova senha e confirmação são obrigatórios'}, status=status.HTTP_400_BAD_REQUEST)
 
     if new_password != confirm_password:
         return Response({'error': 'As senhas não coincidem'}, status=status.HTTP_400_BAD_REQUEST)
 
-    if not user.check_password(old_password):
-        return Response({'error': 'Senha antiga incorreta'}, status=status.HTTP_400_BAD_REQUEST)
+    # if not user.check_password(old_password):
+    #     return Response({'error': 'Senha antiga incorreta'}, status=status.HTTP_400_BAD_REQUEST)
 
     user.set_password(new_password)
     user.save()
     return Response({'success': 'Senha atualizada com sucesso'})
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def logout_user(request):
+    try:
+        token = Token.objects.get(user=request.user)
+        token.delete()
+        return Response({"success": "Usuário deslogado com sucesso"}, status=status.HTTP_200_OK)
+    except Token.DoesNotExist:
+        return Response({"detail": "Usuário não está logado"}, status=status.HTTP_400_BAD_REQUEST)
