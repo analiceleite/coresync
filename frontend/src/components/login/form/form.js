@@ -48,7 +48,6 @@ const Form = () => {
             if (itemActive === 0) {
                 //* Handle login
                 const data = await login(email, password);
-                console.log('Login realizado com sucesso:', data);
                 setPopupMessage('Login realizado com sucesso!');
                 setPopupType('success');
                 setPopupOpen(true);
@@ -64,7 +63,6 @@ const Form = () => {
                     return;
                 }
                 const data = await register(email, password, fullName);
-                console.log('Cadastro realizado com sucesso:', data);
                 //* Handle successful registration
                 setPopupType('success');
                 setPopupOpen(true);

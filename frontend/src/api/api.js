@@ -84,7 +84,6 @@ export const updatePassword = async (passwordData) => {
         
         return response.data;
     } catch (error) {
-        console.log(error)
         throw error;
     }
 };

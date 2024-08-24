@@ -55,7 +55,6 @@ const PopupSuccess = styled.p`
 `;
 
 const Popup = ({ isOpen, onClose, title, message, type }) => {
-    console.log(`ISOPEN: ${isOpen}`)
     if (!isOpen) return null;
 
     return ReactDOM.createPortal(
