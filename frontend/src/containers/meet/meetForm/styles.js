@@ -88,6 +88,7 @@ export const Textarea = styled.textarea`
     min-height: 90px;
     outline: none;
     background-color: #FBFBFB;
+    resize: none;
 
     &::placeholder {
         color: #aaa;
@@ -112,6 +113,7 @@ export const Button = styled.button`
 
 export const Select = styled.select`
     flex: 1;
+    color: black;
     padding: 8px;
     border: none;
     border-radius: 5px;

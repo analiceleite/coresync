@@ -87,6 +87,7 @@ export const updatePassword = async (passwordData) => {
         throw error;
     }
 };
+
 //Função para upload da imagem de perfil
 export const uploadImage = async (file) => {
     const formData = new FormData();
