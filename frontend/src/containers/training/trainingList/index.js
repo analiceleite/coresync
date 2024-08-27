@@ -48,7 +48,7 @@ const TrainingList = () => {
               fetchTrainingList("pending");
             }}
           >
-            Não iniciados
+            Pendentes
           </NavbarTrainingItem>
           <NavbarTrainingItem 
             onClick={() => {
@@ -57,7 +57,7 @@ const TrainingList = () => {
               fetchTrainingList("in progress");
             }}
           >
-            Em andamento
+            andamento
           </NavbarTrainingItem>
           <NavbarTrainingItem 
             onClick={() => {
@@ -72,7 +72,7 @@ const TrainingList = () => {
         </ul>
       </NavbarTraining> 
       <ListTraining> 
-        { 
+        {
           trainingList &&
             trainingList.map((value, index) => (
               <TrainingListItem 
@@ -86,7 +86,8 @@ const TrainingList = () => {
                   setSelectedTraining(value);
                 }}
               />
-            ))
+            )
+          )
         }
       </ListTraining>
     </>

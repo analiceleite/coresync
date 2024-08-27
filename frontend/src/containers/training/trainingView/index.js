@@ -21,7 +21,7 @@ const TrainingView = () => {
           <p>{training && training['training'].description}</p>
         </div>
         <div>
-          <Status training={training} />
+          <Status training={training}/>
         </div>
       </S.Header>
       <S.Content>
