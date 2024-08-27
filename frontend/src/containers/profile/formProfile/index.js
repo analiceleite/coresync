@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as S from './styles.js';
-import { getUser, updateUser, updatePassword } from '../../../api/api'; // Atualize o caminho conforme necessário
-import Popup from '../../../components/global/popup'; // Atualize o caminho conforme necessário
+import { getUser, updateUser, updatePassword } from '../../../api/api';
+import Popup from '../../../components/global/popup';
 
 const FormProfile = () => {
     const [isEdit, setIsEdit] = useState(false);
@@ -11,6 +11,7 @@ const FormProfile = () => {
         'confirmPassword': '',
         'email': '',
     });
+
     const [popup, setPopup] = useState({
         visible: false,
         message: '',
@@ -20,39 +21,27 @@ const FormProfile = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem('user'))
-        console.log(user)
         setForm(
             {
-                'name': user.email,
-                'password': 'Irineu@231',
-                'confirmPassword': 'Irineu@231',
-                'email': user.username,
+                ...form,
+                'password': '',
+                'confirmPassword': '',
+                
+            }
+        )
+    }, [isEdit])
+
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem('user'))
+        setForm(
+            {
+                'name': user && user.email,
+                'password': '',
+                'confirmPassword': '',
+                'email': user && user.username,
             }
         )
     }, [])
-
-    // useEffect(() => {
-    //     const fetchUserData = async () => {
-    //         try {
-    //             const userData = await getUser();
-    //             setForm({
-    //                 name: userData.name || '',
-    //                 email: userData.email || '',
-    //                 password: '',
-    //                 confirmPassword: ''
-    //             });
-    //         } catch (error) {
-    //             setPopup({
-    //                 visible: true,
-    //                 message: 'Não foi possível carregar os dados do usuário.',
-    //                 type: 'error'
-    //             });
-    //         }
-    //     };
-
-    //     fetchUserData();
-    // }, []);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -84,9 +73,9 @@ const FormProfile = () => {
 
             await updateUser(updateData);
 
-            // if (form.password) {
-            //     await updatePassword({ password: form.password });
-            // }
+            if (form.password) {
+                await updatePassword({ password: form.password, confirm_password: form.confirmPassword });
+            }
 
             setPopup({
                 visible: true,
@@ -123,7 +112,7 @@ const FormProfile = () => {
                     <S.Label> Senha </S.Label>
                     <S.Field
                         $edit={isEdit}
-                        value={form.password}
+                        value={isEdit ? form.password : '********'}
                         name="password"
                         type='password'
                         onChange={handleChange}
@@ -175,11 +164,12 @@ const FormProfile = () => {
             )}
 
             {popup.visible && (
-                <Popup
-                    message={popup.message}
-                    type={popup.type}
-                    onClose={() => setPopup({ ...popup, visible: false })}
-                />
+            <Popup
+                isOpen={true}
+                message={popup.message}
+                type={popup.type}
+                onClose={() => setPopup({ ...popup, visible: false })}
+            />
             )}
         </S.Background>
     );
