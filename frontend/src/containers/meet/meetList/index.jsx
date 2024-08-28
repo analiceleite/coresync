@@ -6,6 +6,7 @@ import { getMeet } from '../../../api/meet_api';
 
 const MeetList = () => {
   const [ meetListInfo, setMeetListInfo ] = useState([]);
+  
   const fetchMeetList = async () => {
     try {
       const meetList = await getMeet();
@@ -19,12 +20,7 @@ const MeetList = () => {
 
   useEffect(() => {
     fetchMeetList();
-    console.log()
   }, []);
-
-  useEffect(() => {
-    console.log('Reuniões no meetListInfo', meetListInfo)
-  }, [meetListInfo]);
 
   return (
     <>
@@ -37,6 +33,7 @@ const MeetList = () => {
                 meetListInfo && 
                   meetListInfo.map((value, map) => (
                     <MeetListItem 
+                      key={value.id}
                       idPopup={value.id} 
                       participants={value.participantes} 
                       title={value.titulo}
@@ -47,9 +44,6 @@ const MeetList = () => {
                     />
                   ))
               }
-                
-              {/* <MeetListItem idPopup="1"/>
-              <MeetListItem idPopup="1"/> */}
             </div>             
         </S.List>
     </>

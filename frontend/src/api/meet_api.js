@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const API_BASE_URL = "http://localhost:8000";
+const user = JSON.parse(localStorage.getItem('user'));
 
 export const registerMeet = async (
   titulo,
@@ -11,6 +12,7 @@ export const registerMeet = async (
   duracao
 ) => {
   try {
+    console.log(participantes)
     const response = await axios.post(
       `${API_BASE_URL}/api/meet/`,
       {
@@ -20,6 +22,7 @@ export const registerMeet = async (
         descricao: descricao,
         duracao: duracao,
         participantes: participantes,
+        user: user.id,
       },
       {
         headers: {
@@ -53,16 +56,15 @@ export const getUsers = async () => {
 
 export const getMeet = async () => {
   try {
-    const user = JSON.parse(localStorage.getItem('user'));
     const response = await axios.get(`${API_BASE_URL}/api/meet/`, {
       headers: {
         Authorization: `Token ${localStorage.getItem("user_token")}`,
       },
-      params: {
-        user_id: user.id,
-    },
+      // params: {
+      //   user_id: user.id,
+      // },
     });
-    // console.log(response.data);
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error(

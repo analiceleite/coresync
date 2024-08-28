@@ -40,8 +40,9 @@ const MeetForm = () => {
 
   //* Handle user selection change
   const handleUserChange = (e) => {
-    setSelectedUser(e.target.value);
     console.log("Usuário selecionado:", e.target.value);
+    setSelectedUser(e.target.value);
+    setParticipantes( prevState => [ ...prevState, !selectedUser.includes(e.target.value) && e.target.value ]);
   };
 
   //* Handle form submission
@@ -147,6 +148,7 @@ const MeetForm = () => {
               value={duracao}
               onChange={(e) => setDuracao(e.target.value)}
               required
+              
             >
               <option value="15min">15min</option>
               <option value="30min">30min</option>
