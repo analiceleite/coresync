@@ -50,3 +50,25 @@ export const getUsers = async () => {
     throw error;
   }
 };
+
+export const getMeet = async () => {
+  try {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const response = await axios.get(`${API_BASE_URL}/api/meet/`, {
+      headers: {
+        Authorization: `Token ${localStorage.getItem("user_token")}`,
+      },
+      params: {
+        user_id: user.id,
+    },
+    });
+    // console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Erro ao buscar as reuniões marcadas:",
+      error.response?.data || error.message
+    );
+    throw error;
+  }
+};

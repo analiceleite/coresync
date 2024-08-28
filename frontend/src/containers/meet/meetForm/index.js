@@ -29,7 +29,6 @@ const MeetForm = () => {
     const fetchUsers = async () => {
       try {
         const usersData = await getUsers();
-        console.log("Usuários retornados:", usersData);
         setUsers(usersData);
       } catch (error) {
         console.error("Erro ao buscar usuários:", error);
