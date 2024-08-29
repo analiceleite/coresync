@@ -6,23 +6,22 @@ import { PopupContext } from '../../../contexts/popupContext';
 import { IoPersonCircleSharp } from "react-icons/io5";
 
 const PopupMeet = ({id}) => {
-    const { popups } = useContext(PopupContext);
-
+    const { popups, data } = useContext(PopupContext);
     return (
         <>
             { popups[id] &&
                 <PopupContainer idPopup="1" >
                     <S.Header>
                         <DateView big>
-                            <p><b>08</b></p>
-                            <p>maio</p>
+                            <p><b>{data.monthNumber}</b></p>
+                            <p>{data.monthText}</p>
                         </DateView>
                     </S.Header>
                     <S.Content>
                         <S.TitleContainer>
                             <div>
                                 <h3>
-                                    Alinhamentos do conteúdo
+                                    {data.title}
                                 </h3>
                                 <p>
                                     <b>Organizador(a)</b>: João Pinott Leite
@@ -31,9 +30,7 @@ const PopupMeet = ({id}) => {
                         </S.TitleContainer>
                         <S.DescriptionContainer>
                             <p>
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                                Ad accusantium itaque vel cupiditate dicta, illo corporis perferendis illum eaque ea doloremque 
-                                facilis animi nobis, asperiores consequatur vero eius numquam nulla.
+                                {data.description}
                             </p>
                         </S.DescriptionContainer>
                         <S.ParticipantsContainer>

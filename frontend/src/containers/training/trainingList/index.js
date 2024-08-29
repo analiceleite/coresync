@@ -43,8 +43,8 @@ const TrainingList = () => {
           </NavbarTrainingItem>
           <NavbarTrainingItem 
             onClick={() => {
-              setUnderlineMove("translateX(calc(100% / 4 * 3.3))");
-              setUnderlineSize("106px");
+              setUnderlineMove("translateX(calc(100% / 4 * 4.4))");
+              setUnderlineSize("80px");
               fetchTrainingList("pending");
             }}
           >
@@ -52,8 +52,8 @@ const TrainingList = () => {
           </NavbarTrainingItem>
           <NavbarTrainingItem 
             onClick={() => {
-              setUnderlineMove("translateX(calc(100% / 4 * 7.8))");
-              setUnderlineSize("120px");
+              setUnderlineMove("translateX(calc(100% / 4 * 9.8))");
+              setUnderlineSize("86px");
               fetchTrainingList("in progress");
             }}
           >
@@ -61,7 +61,7 @@ const TrainingList = () => {
           </NavbarTrainingItem>
           <NavbarTrainingItem 
             onClick={() => {
-              setUnderlineMove("translateX(calc(100% / 4 * 19.4))");
+              setUnderlineMove("translateX(calc(100% / 4 * 16.6))");
               setUnderlineSize("82px");
               fetchTrainingList("complete");
             }}

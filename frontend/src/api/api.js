@@ -13,6 +13,10 @@ export const login = async (username, password) => {
         localStorage.setItem('user', JSON.stringify(response.data.user))
         return response.data;
     } catch (error) {
+        console.error(
+            "",
+            error.response?.data || error.message
+        );
         throw error;
     }
 };
@@ -26,6 +30,10 @@ export const logout = async () => {
             }
         });
     } catch (error) {
+        console.error(
+            "",
+            error.response?.data || error.message
+        );
         throw error;
     }
 };
@@ -40,6 +48,10 @@ export const register = async (username, password, email) => {
         });
         return response.data;
     } catch (error) {
+        console.error(
+            "",
+            error.response?.data || error.message
+        );
         throw error;
     }
 };
@@ -52,7 +64,10 @@ export const getUser = async () => {
         });
         return response.data;
     } catch (error) {
-        console.error('Erro ao buscar usuário autenticado:', error);
+        console.error(
+            "Erro ao buscar o usuário autenticado:",
+            error.response?.data || error.message
+        );
         throw new Error('Erro ao buscar usuário autenticado'); 
     }
 };
@@ -69,6 +84,10 @@ export const updateUser = async (userData) => {
         localStorage.setItem('user', JSON.stringify(response.data));
         return response.data;
     } catch (error) {
+        console.error(
+            "",
+            error.response?.data || error.message
+        );
         throw error;
     }
 };
@@ -84,6 +103,10 @@ export const updatePassword = async (passwordData) => {
         
         return response.data;
     } catch (error) {
+        console.error(
+            "",
+            error.response?.data || error.message
+        );
         throw error;
     }
 };
@@ -102,9 +125,10 @@ export const uploadImage = async (file) => {
         });
         return response.data
     } catch (error) {
-        if (error.response) {
-            console.error('Dados do erro:', error.response.data);
-        }
+        console.error(
+            "",
+            error.response?.data || error.message
+        );
     }
 };
 
@@ -120,13 +144,17 @@ export const getProfileImage = async () => {
         const url = URL.createObjectURL(new Blob([response.data]));
         return url
     } catch (error) {
+        console.error(
+            "",
+            error.response?.data || error.message
+        );
         throw error;
     }
 };
 
 //Função para requisitar os treinamnetos com o status
 export const getTrainingStatus = async (status) => {
-    const user = JSON.parse(localStorage.getItem('user'))
+    const user = JSON.parse(localStorage.getItem('user'));
     try {
         const response = await axios.get(`${API_BASE_URL}/training/training_status/`, {
             headers: {
@@ -139,6 +167,10 @@ export const getTrainingStatus = async (status) => {
         });
         return response.data
     } catch (error) {
+        console.error(
+            "",
+            error.response?.data || error.message
+        );
         throw error;
     }
 };
@@ -160,6 +192,10 @@ export const updateStatusTraining = async (training, newStatus) => {
         });
         return response.data
     } catch (error) {
+        console.error(
+            "",
+            error.response?.data || error.message
+        );
         throw error;
     }
 };
