@@ -10,27 +10,27 @@ const PopupMeet = ({id}) => {
     return (
         <>
             { popups[id] &&
-                <PopupContainer idPopup="1" >
+                <PopupContainer idPopup={id} >
                     <S.Header>
                         <DateView big>
-                            <p><b>{data.monthNumber}</b></p>
-                            <p>{data.monthText}</p>
+                            <p><b>{data && data.monthNumber}</b></p>
+                            <p>{data && data.monthText}</p>
                         </DateView>
                     </S.Header>
                     <S.Content>
                         <S.TitleContainer>
                             <div>
                                 <h3>
-                                    {data.title}
+                                    {data && data.title}
                                 </h3>
                                 <p>
-                                    <b>Organizador(a)</b>: João Pinott Leite
+                                    <b>Organizador(a)</b>: {data.organizer}
                                 </p>
                             </div>
                         </S.TitleContainer>
                         <S.DescriptionContainer>
                             <p>
-                                {data.description}
+                                {data && data.description}
                             </p>
                         </S.DescriptionContainer>
                         <S.ParticipantsContainer>

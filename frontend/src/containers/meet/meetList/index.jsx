@@ -4,7 +4,7 @@ import MeetListItem from '../../../components/meet/meetListItem';
 import PolkaDots from '../../../components/global/dots';
 import { getMeet } from '../../../api/meet_api';
 
-const MeetList = () => {
+const MeetList = ({renderList}) => {
   const [ meetListInfo, setMeetListInfo ] = useState([]);
   
   const fetchMeetList = async () => {
@@ -21,6 +21,10 @@ const MeetList = () => {
   useEffect(() => {
     fetchMeetList();
   }, []);
+
+  useEffect(() => {
+    fetchMeetList();
+  }, [renderList]);
 
   return (
     <>
@@ -41,6 +45,7 @@ const MeetList = () => {
                       time={value.hora}
                       duration={value.duracao}
                       description={value.descricao}
+                      organizer={value.user.username}
                     />
                   ))
               }

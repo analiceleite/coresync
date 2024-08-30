@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API_BASE_URL = "http://localhost:8000";
-const user = JSON.parse(localStorage.getItem('user'));
+const user = localStorage.getItem('user') && localStorage.getItem('user') !== "undefined" && JSON.parse(localStorage.getItem('user'));
 
 export const registerMeet = async (
   titulo,
@@ -12,7 +12,6 @@ export const registerMeet = async (
   duracao
 ) => {
   try {
-    console.log(participantes)
     const response = await axios.post(
       `${API_BASE_URL}/api/meet/`,
       {
@@ -22,7 +21,7 @@ export const registerMeet = async (
         descricao: descricao,
         duracao: duracao,
         participantes: participantes,
-        user: user.id,
+        user_id: user.id,
       },
       {
         headers: {

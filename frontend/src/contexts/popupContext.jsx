@@ -5,6 +5,7 @@ export const PopupContext = createContext();
 export const PopupProvider = ({ children }) => {
     const [popups, setPopups] = useState({});
     const [data, setData] = useState({});
+    const [idPopup, setIdPopup] = useState("1");
 
     const togglePopup = (id, data) => {
         setPopups(prev => ({
@@ -12,10 +13,11 @@ export const PopupProvider = ({ children }) => {
             [id]: !prev[id]
         }));
         setData(data)
+        setIdPopup(id)
     };
 
     return (
-        <PopupContext.Provider value={{ popups, togglePopup, data }}>
+        <PopupContext.Provider value={{ popups, togglePopup, data, idPopup }}>
             {children}
         </PopupContext.Provider>
     );

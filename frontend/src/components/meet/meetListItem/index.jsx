@@ -3,7 +3,7 @@ import * as S from './styles';
 import { IoChevronDownOutline } from "react-icons/io5";
 import { PopupContext } from '../../../contexts/popupContext';
 
-const MeetListItem = ({idPopup, participants, title, date, time, duration, description}) => {
+const MeetListItem = ({idPopup, participants, title, date, time, duration, description, organizer}) => {
     const { togglePopup } = useContext(PopupContext);
     
     const startTime = time.slice(0, 5);
@@ -28,7 +28,7 @@ const MeetListItem = ({idPopup, participants, title, date, time, duration, descr
             </S.Header>
             <S.Content>
                 <h3>{title}</h3>
-                <p>João Pinott Leite</p>
+                <p>{organizer}</p>
                 <p>
                     Hour: {startTime} - {duration}
                 </p>
@@ -42,7 +42,8 @@ const MeetListItem = ({idPopup, participants, title, date, time, duration, descr
                             'monthText':month()[0],
                             'time':time,
                             'duration':duration,
-                            'description':description
+                            'description':description,
+                            'organizer': organizer
                         }
                     )}>
                     Veja mais

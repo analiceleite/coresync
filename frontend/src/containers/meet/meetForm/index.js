@@ -5,7 +5,7 @@ import { registerMeet, getUsers } from "../../../api/meet_api.js";
 import Popup from "../../../components/global/popup";
 import InputMask from "react-input-mask";
 
-const MeetForm = () => {
+const MeetForm = ({setRenderList, renderList}) => {
   //* Fields state
   const [titulo, setTitulo] = useState("");
   const [data, setData] = useState("");
@@ -24,7 +24,6 @@ const MeetForm = () => {
   const [popupMessage, setPopupMessage] = useState("");
   const [popupType, setPopupType] = useState("");
 
-  //* Fetch users when the component mounts
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -38,17 +37,20 @@ const MeetForm = () => {
     fetchUsers();
   }, []);
 
-  //* Handle user selection change
   const handleUserChange = (e) => {
-    console.log("Usuário selecionado:", e.target.value);
     setSelectedUser(e.target.value);
-    setParticipantes( prevState => [ ...prevState, !selectedUser.includes(e.target.value) && e.target.value ]);
+    setParticipantes(
+      prevState => [ 
+        ...prevState, 
+        ...(participantes.includes(e.target.value) ? [] : [e.target.value])
+      ]
+    );
   };
 
-  //* Handle form submission
   const handleRegister = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    setRenderList(!renderList);
 
     console.log("Dados para envio:", {
       titulo,
@@ -148,7 +150,6 @@ const MeetForm = () => {
               value={duracao}
               onChange={(e) => setDuracao(e.target.value)}
               required
-              
             >
               <option value="15min">15min</option>
               <option value="30min">30min</option>

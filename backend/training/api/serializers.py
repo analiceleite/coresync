@@ -13,8 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id']
 
 class TrainingStatusSerializer(serializers.ModelSerializer):
-    user = UserSerializer(read_only=True)  # Somente leitura, não para escrita
-    training = TrainingSerializer(read_only=True)  # Somente leitura, não para escrita
+    training = TrainingSerializer(read_only=True)  
     user_id = serializers.PrimaryKeyRelatedField(queryset=get_user_model().objects.all(), write_only=True)
     training_id = serializers.PrimaryKeyRelatedField(queryset=Training.objects.all(), write_only=True)
 
