@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const API_BASE_URL = 'http://localhost:8000'; 
+const user = localStorage.getItem('user') && localStorage.getItem('user') !== "undefined" && JSON.parse(localStorage.getItem('user'));
 
 // Função para login
 export const login = async (username, password) => {
@@ -177,12 +178,17 @@ export const getTrainingStatus = async (status) => {
 
 //Função para fazer o update do status
 export const updateStatusTraining = async (training, newStatus) => {
+    console.log(training.training.id)
+    console.log(newStatus)
+    console.log(training.user.id)
+    console.log(user.id)
     try {
-        const response = await axios.put(`${API_BASE_URL}/training/training_status/${training.id}/`, 
+        const response = await axios.put(`${API_BASE_URL}/training/training_status/${training.training.id}/`, 
         {
             "status": newStatus,
-            "user_id": training.user.id,
-            "training_id": training.training.id
+            "user_id": user.id,
+            "training_id": training.training.id,
+            'user': user.id
         },
         {
             headers: {

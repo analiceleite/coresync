@@ -57,7 +57,7 @@ const TrainingList = () => {
               fetchTrainingList("in progress");
             }}
           >
-            andamento
+            Andamento
           </NavbarTrainingItem>
           <NavbarTrainingItem 
             onClick={() => {
